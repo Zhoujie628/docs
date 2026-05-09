@@ -1,6 +1,6 @@
 # 1 产品介绍
 
-# 2 软件包安装指导
+# 2 软件安装指南（快速安装）
 
 # 3 快速入门
 ![photo](figures/registry-center.png)

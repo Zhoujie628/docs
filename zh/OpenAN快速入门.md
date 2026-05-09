@@ -4,6 +4,7 @@
 
 # 3 快速入门
 ![photo](figures/registry-center.png)
+
 注册中心是一个专注于Agent统一管理的服务，支持用户将来自不同厂商的Agent进行集中注册与管理，实现多源Agent的可控接入与维护。主要功能包括：
 
 - **注册AgentCard**：支持将不同厂商的Agent注册到中心，统一纳管。
@@ -52,6 +53,7 @@ python start_agents_server.py
 - 启动对应的 Agent 服务，供编排中心调用
 ## 3.4 核心流程验证
 完成上述步骤后，您可以按照以下流程体验 OpenAN 的核心能力：
+
 ![photo](figures/workflow.png)
 
 ### 3.4.1 访问编排中心界面

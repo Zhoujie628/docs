@@ -707,7 +707,7 @@ sudo ./bin/install_service.sh uninstall
 
 编排中心是一个面向多智能体（Agent）协作的可视化编排平台，支持通过图形化工作流设计器定义 Agent 之间的调用关系与执行流程。后端基于 Python 框架解析流程并驱动 Agent 协同工作，帮助用户高效构建、管理和运行复杂的 Agent 协作流程。主要功能包括：
 
-- **PSOP 管理**：支持工作流（PSOP）的列表查看、详情查询、保存与删除操作。
+- **PSOP(Parallel Standard Operating Procedure)管理**：支持工作流（PSOP）的列表查看、详情查询、保存与删除操作。
 - **PDF 解析**：提供 PDF 文件内容解析能力，为后续流程设计提供数据支持。
 - **智能规划**：根据用户需求自动生成工作流规划，降低编排门槛。
 - **Agent 管理**：获取全量 AgentCard 列表，便于了解可用能力与调用方式。
@@ -729,7 +729,6 @@ cd {项目路径}/orchestration-center/samples
 python start_agents_server.py
 ```
 该脚本会：
-
 - 向注册中心注册多个示例 Agent
 - 启动对应的 Agent 服务，供编排中心调用
 ## 3.3 核心流程验证
@@ -762,3 +761,57 @@ python start_agents_server.py
 - 输入用户意图，单击“检索工作流”按钮
 - 选择匹配的 PSOP
 - 单击 `▶` 按钮执行，右侧区域实时显示执行过程
+
+## 3.4 示例Agent介绍
+
+本章节以赛事直播保障场景为例，介绍多个Agent如何协同工作，实现端到端的闭环自治。
+
+### 场景背景
+
+在赛事直播场景中，需要保证直播过程的网络稳定，确保观众获得流畅的观看体验。该场景涉及Live Streaming Agent、Assurance Agent和RAN Agent三个智能体的协作。
+
+### Agent角色说明
+
+| Agent名称 | 职责 |
+| --- | --- |
+| Live Streaming Agent | 负责赛事需求的解析与监控 |
+| Assurance Agent | 负责保障策略及其恢复策略的生成 |
+| RAN Agent | 负责无线网络的分析、规划与策略执行 |
+
+### 协作流程
+
+整个赛事直播保障流程分为保障执行和保障恢复两个阶段：
+
+```mermaid
+flowchart TD
+    subgraph 阶段一:保障执行
+        A[Live Streaming Agent<br/>提取赛事路线和业务需求] --> B[Live Streaming Agent<br/>下发需求给Assurance Agent]
+        B --> C[Assurance Agent<br/>将赛事保障需求转换为网络需求]
+        C --> D[Assurance Agent<br/>下发网络需求给RAN Agent]
+        D --> E[RAN Agent<br/>分析网络现状]
+        E --> F[RAN Agent<br/>规划网络策略方案]
+        F --> G[RAN Agent<br/>执行网络策略方案]
+        G --> H[Live Streaming Agent<br/>实时反馈KQI指标及任务状态]
+    end
+
+    subgraph 阶段二:保障恢复
+        H --> I[Assurance Agent<br/>下发恢复网络配置指令]
+        I --> J[RAN Agent<br/>执行网络配置恢复]
+    end
+```
+
+**阶段一：保障执行**
+
+1. **需求提取**：Live Streaming Agent提取赛事路线和业务需求
+2. **需求下发**：Live Streaming Agent将需求下发给Assurance Agent
+3. **需求转换**：Assurance Agent将赛事保障需求转换成网络需求
+4. **网络需求下发**：Assurance Agent将网络需求下发给RAN Agent
+5. **网络分析**：RAN Agent分析当前网络现状
+6. **策略规划**：RAN Agent根据网络现状和网络保障需求，规划网络策略方案
+7. **策略执行**：RAN Agent执行网络策略方案
+8. **状态反馈**：Live Streaming Agent实时反馈保障任务关键质量指标及任务状态，直到直播结束
+
+**阶段二：保障恢复**
+
+9. **恢复指令下发**：Assurance Agent下发恢复保障前网络配置指令
+10. **配置恢复**：RAN Agent执行网络配置恢复操作

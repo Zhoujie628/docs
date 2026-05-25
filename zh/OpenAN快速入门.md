@@ -691,6 +691,22 @@ sudo ./bin/install_service.sh uninstall
 
 ---
 
+## 2.5 编排中心前端离线安装步骤
+
+前端代码已集成在编排中心代码仓中，完成2.4章节后前端代码即已安装完成，只需启动前端服务即可。启动步骤如下：
+
+进入编排中心安装目录下的 `workflow-designer` 目录：
+
+```bash
+cd {安装目录}/orchestration-center/workflow-designer
+npm install --force
+npm run dev
+```
+
+启动成功后，可通过浏览器访问 `http://localhost:3003` 进入编排中心前端界面。
+
+---
+
 # 3 快速入门
 ![photo](figures/a2a-t.png)
 

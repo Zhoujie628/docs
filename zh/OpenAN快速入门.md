@@ -40,6 +40,7 @@ OpenAN 包含 6 个模块，构成了完整的智能体协作框架：
 整体软件安装流程如下：
 
 ![[photo]](figures/installflow.png)
+
 ## 2.1 系统要求
 
 本项目基于 Python 3.10 开发，编译安装前请确保目标系统满足以下要求：
@@ -121,16 +122,16 @@ ldd --version
 
 ### 2.2.1 Python离线安装步骤
 
-先检查环境上是否已安装python，版本是否为3.10.15，如果是则跳过如下安装步骤
+先检查环境上是否已安装python，版本是否为3.10.15，如果是则跳过如下安装步骤。
 ```bash
 python3 --version   # 检查python版本
 ```
 
 
 
-1.下载安装包
+1.下载安装包。
 
-在可接通网络的Linux服务器上执行以下命令获取安装包，Windows系统则直接访问网页下载获取
+在可接通网络的Linux服务器上执行以下命令获取安装包，Windows系统则直接访问网页下载获取。
 
 ```bash
 wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
@@ -138,28 +139,28 @@ wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
 
 将 `Python-3.10.15.tgz` 传输到目标服务器。
 
-2.解压安装包
+2.解压安装包。
 
 ```bash
 tar -xzf Python-3.10.15.tgz
 cd Python-3.10.15
 ```
 
-3.配置安装路径
+3.配置安装路径。
 
 ```bash
 # 安装到 /usr/local/python310，避免覆盖系统Python
 ./configure --prefix=/usr/local/python310 --enable-optimizations
 ```
 
-4.编译安装
+4.编译安装。
 
 ```bash
 make -j 4
 sudo make altinstall
 ```
 
-5.创建软链接
+5.创建软链接。
 
 ```bash
 # 创建python3软链接
@@ -169,7 +170,7 @@ sudo ln -sf /usr/local/python310/bin/python3 /usr/local/bin/python3
 sudo ln -sf /usr/local/python310/bin/pip3 /usr/local/bin/pip3
 ```
 
-6.验证安装
+6.验证安装。
 
 ```bash
 python3 --version   # 应输出 Python 3.10.15
@@ -190,7 +191,7 @@ pip3 --version
 psql --version
 ```
 
-1.下载安装包
+1.下载安装包。
 
 在可接通网络的Linux服务器上执行以下命令获取安装包，Windows系统则直接访问网页下载获取。
 
@@ -821,7 +822,8 @@ Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 1
  	 
 以下视频展示了赛事直播保障场景中多Agent协作的完整流程，涵盖保障执行与保障恢复两个阶段：
 
-![协作流程演示视频](/zh/figures/vedio.gif)
+![协作流程演示视频](./figures/vedio.gif)
+
 ### 3.1.3 启动示例 Agent
 为了快速体验完整流程，可以启动项目自带的示例 Agent 服务。
 ```bash

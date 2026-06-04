@@ -1,6 +1,7 @@
 # 1 Project Introduction
 
 ## Background
+
 From 2G to 5G, mobile communication networks have undergone four generations of evolution, with network scale and complexity growing exponentially. Traditional operations relying heavily on manual labor face challenges of high operational costs, pressure on user experience, and lack of business innovation. Since 2019, leading global operators have been promoting the Autonomous Network (AN) concept — transitioning networks from "manual operation" to "automated execution," ultimately achieving "autonomous governance," and classifying network autonomy levels as L1-L5.
 AN L4's core characteristic is achieving end-to-end closed-loop autonomy in specific scenarios. To achieve L4, the problem of multi-vendor, cross-layer, cross-domain intelligent agent interconnection and collaboration must be solved. Although the industry currently has general agent protocols (such as A2A protocol) and orchestration tools (such as LangGraph) to address agent interconnection and collaboration, their application in the telecommunications domain faces issues such as network operations security risks, complex coding for operations engineers, and difficulty in reusing operations knowledge and tools. Therefore, OpenAN emerged.
 
@@ -32,7 +33,7 @@ OpenAN contains 6 modules, forming a complete intelligent agent collaboration fr
 
 > **Note**: OpenAN's first open-source release includes A2A-T SDK, Registration and Orchestration, and Scenario-based Practices modules. Other modules will continue to evolve in subsequent versions.
 
-![photo](<figures/architectural diagram.png>)
+![photo](figures/architectural%20diagram.PNG)
 
 # 2 Software Installation Guide
 
@@ -730,13 +731,13 @@ A2A-T SDK includes A2A-T Python SDK and A2A-T Java SDK, which are the Python/Jav
 
 - A2A-T Python SDK
 
-[Installation and configuration instructions are in the Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+[Installation and configuration instructions are in the Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/user_guide.md)
 
 The Python SDK source code is in the `a2a-t-sdk` repository, and the end-to-end demonstration samples are in the `a2a-t-samples` repository. The SDK itself requires Python 3.12+, and the current samples repository uses Python 3.14 per its README requirements.
 
 - A2A-T Java SDK
 
-[Installation and configuration instructions are in the Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+[Installation and configuration instructions are in the Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md)
 
 The Java SDK source code and examples are both in the `a2a-t-java` repository. Before running, you need to prepare JDK 17+, Maven, and configure an available LLM service address and API Key.
 
@@ -771,13 +772,13 @@ The orchestration-center is a visual orchestration platform for multi-agent coll
 
 ### 3.1.1 Start Services
 #### 3.1.1.1 Start registry-center Service
-[For startup instructions, see the registry-center User Guide](https://gitcode.com/OpenAN/registry-center/blob/main/docs/zh/%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#%E5%90%AF%E5%8A%A8CLI)
+[For startup instructions, see the Registry Center User Guide](https://gitcode.com/OpenAN/registry-center/blob/main/docs/en/Registry%20Center%20User%20Guide.md)
 
 #### 3.1.1.2 Start orchestration-center Backend Service
-[For startup instructions, see the orchestration-center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#222-%E5%90%AF%E5%8A%A8%E7%BC%96%E6%8E%92%E4%B8%AD%E5%BF%83%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1)
+[For startup instructions, see the Orchestration Center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#222-start-the-orchestration-center-backend-service)
 
 #### 3.1.1.3 Start orchestration-center Frontend Interface
-[For startup instructions, see the orchestration-center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#223-%E5%AE%89%E8%A3%85%E5%89%8D%E7%AB%AF%E4%BE%9D%E8%B5%96%E5%B9%B6%E5%90%AF%E5%8A%A8)
+[For startup instructions, see the Orchestration Center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#223-install-frontend-dependencies-and-start)
 
 ### 3.1.2 Example Agent Introduction
   	 
@@ -934,8 +935,8 @@ After completing the above steps, you can experience the Python SDK's core capab
 
 The Hello World example is used to verify the minimum link, and the Subscribe Incident example is used to verify multi-round negotiation in the incident subscription scenario. For detailed instructions, see:
 
-- [Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
-- [Python SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
+- [Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/user_guide.md)
+- [Python SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/developer_guide.md)
 
 ### 3.2.2 A2A-T Java SDK
 
@@ -992,5 +993,5 @@ After completing the above steps, you can experience the Java SDK's core capabil
 
 For detailed instructions, see:
 
-- [Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
-- [Java SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
+- [Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md)
+- [Java SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/developer_guide.md)

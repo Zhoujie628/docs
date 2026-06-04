@@ -850,7 +850,7 @@ The left side displays all Agents retrieved from the registry-center, which can 
 
 4.Create a workflow.
    
-Click the `+` button and select the creation method: ([For detailed creation flow, see the orchestration-center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md))
+Click the `+` button and select the creation method: ([For detailed creation flow, see the Orchestration Center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md))
 
 | Method | Operation Description |
 | --- | --- |

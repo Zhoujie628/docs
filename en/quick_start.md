@@ -731,7 +731,7 @@ A2A-T SDK includes A2A-T Python SDK and A2A-T Java SDK, which are the Python/Jav
 
 - A2A-T Python SDK
 
-[Installation and configuration instructions are in the Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/user_guide.md)
+[Installation and configuration instructions are in the Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md)
 
 The Python SDK source code is in the `a2a-t-sdk` repository, and the end-to-end demonstration samples are in the `a2a-t-samples` repository. The SDK itself requires Python 3.12+, and the current samples repository uses Python 3.14 per its README requirements.
 
@@ -772,13 +772,13 @@ The orchestration-center is a visual orchestration platform for multi-agent coll
 
 ### 3.1.1 Start Services
 #### 3.1.1.1 Start registry-center Service
-[For startup instructions, see the Registry Center User Guide](https://gitcode.com/OpenAN/registry-center/blob/main/docs/en/Registry%20Center%20User%20Guide.md)
+[For startup instructions, see the Registry Center User Guide](https://github.com/project-openan/registry-center/blob/main/docs/en/Registry%20Center%20User%20Guide.md#starting-the-cli)
 
 #### 3.1.1.2 Start orchestration-center Backend Service
-[For startup instructions, see the Orchestration Center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#222-start-the-orchestration-center-backend-service)
+[For startup instructions, see the Orchestration Center User Guide](https://github.com/project-openan/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#222-start-the-orchestration-center-backend-service)
 
 #### 3.1.1.3 Start orchestration-center Frontend Interface
-[For startup instructions, see the Orchestration Center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#223-install-frontend-dependencies-and-start)
+[For startup instructions, see the Orchestration Center User Guide](https://github.com/project-openan/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#223-install-frontend-dependencies-and-start)
 
 ### 3.1.2 Example Agent Introduction
   	 
@@ -850,7 +850,7 @@ The left side displays all Agents retrieved from the registry-center, which can 
 
 4.Create a workflow.
    
-Click the `+` button and select the creation method: ([For detailed creation flow, see the Orchestration Center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md))
+Click the `+` button and select the creation method: ([For detailed creation flow, see the Orchestration Center User Guide](https://github.com/project-openan/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md#3-usage))
 
 | Method | Operation Description |
 | --- | --- |
@@ -935,8 +935,8 @@ After completing the above steps, you can experience the Python SDK's core capab
 
 The Hello World example is used to verify the minimum link, and the Subscribe Incident example is used to verify multi-round negotiation in the incident subscription scenario. For detailed instructions, see:
 
-- [Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/user_guide.md)
-- [Python SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/developer_guide.md)
+- [Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md)
+- [Python SDK Developer Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/developer_guide.md)
 
 ### 3.2.2 A2A-T Java SDK
 

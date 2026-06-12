@@ -20,11 +20,11 @@ OpenAN version numbering uses year and month as the version number, allowing use
 
 This version is the first release of OpenAN, with modules including registry-center, orchestration-center, A2A-T SDK (A2A-T Python SDK, A2A-T Java SDK).
 
-- The main features of registry-center are shown in [Table 1](#table_registry_features). For detailed information on feature descriptions, please refer to [Registry-center User Guide](https://gitcode.com/OpenAN/registry-center/blob/main/docs/en/Registry%20Center%20User%20Guide.md).
+- The main features of registry-center are shown in [Table 1](#table_registry_features). For detailed information on feature descriptions, please refer to [Registry-center User Guide](https://github.com/project-openan/registry-center/blob/main/docs/en/Registry%20Center%20User%20Guide.md).
   
-- The main features of orchestration-center are shown in [Table 2](#table_orchestrate_features). For detailed information on feature descriptions, please refer to [Orchestration-center User Guide](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md).
+- The main features of orchestration-center are shown in [Table 2](#table_orchestrate_features). For detailed information on feature descriptions, please refer to [Orchestration-center User Guide](https://github.com/project-openan/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md).
   
-- The main features of A2A-T Python SDK are shown in [Table 3](#table_a2at_sdk_features). For detailed information on feature descriptions, please refer to [A2A-T Python SDK User Guide](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/en/user_guide.md).
+- The main features of A2A-T Python SDK are shown in [Table 3](#table_a2at_sdk_features). For detailed information on feature descriptions, please refer to [A2A-T Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md).
   
 - The main features of A2A-T Java SDK are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [A2A-T Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md).
 
@@ -494,7 +494,7 @@ This version is the first release of OpenAN, with modules including registry-cen
 
 ### Deliverables
 
-The initial release of registry-center only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community registry-center repository](https://gitcode.com/OpenAN/registry-center).
+The initial release of registry-center only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community registry-center repository](https://github.com/project-openan/registry-center).
 
 **Table 1** Registry-center v1.0.0 Deliverable List
 
@@ -586,7 +586,7 @@ The initial release of registry-center only provides source code, without binary
 
 ### Deliverables
 
-The initial release of orchestration-center only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community orchestration-center repository](https://gitcode.com/OpenAN/orchestration-center).
+The initial release of orchestration-center only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community orchestration-center repository](https://github.com/project-openan/orchestration-center/tree/main).
 
 **Table 1** Orchestration-center v1.0.0 Deliverable List
 
@@ -671,7 +671,7 @@ The initial release of orchestration-center only provides source code, without b
 
 ### Deliverables
 
-The initial release of A2A-T Python SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Python SDK repository](https://gitcode.com/OpenAN/a2a-t-sdk).
+The initial release of A2A-T Python SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Python SDK repository](https://github.com/project-openan/a2a-t-sdk).
 
 **Table 1** A2A-T Python SDK v0.1.8 Deliverable List
 
@@ -802,7 +802,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Deliverables
 
-The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://gitcode.com/OpenAN/a2a-t-java).
+The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://github.com/project-openan/a2a-t-java).
 
 **Table 1** A2A-T Java SDK v0.1.8 Deliverable List
 
@@ -994,11 +994,11 @@ This version is the first release of OpenAN, with no CVE disclosed vulnerabiliti
 
 # Source Code
 
-OpenAN repository address: <https://gitcode.com/OpenAN>
+OpenAN repository address: <https://github.com/project-openan>
 
 # Contributing
 
-As an OpenAN user, you can assist the OpenAN community in various ways. For methods of contributing to the community, please refer to the [Contributing Guide](https://gitcode.com/OpenAN/community/blob/main/CONTRIBUTING.md).
+As an OpenAN user, you can assist the OpenAN community in various ways. For methods of contributing to the community, please refer to the [Contributing to OpenAN](https://github.com/project-openan/.github/blob/main/CONTRIBUTING.md).
 
 # Acknowledgments
 

@@ -733,7 +733,7 @@ A2A-T SDK分为A2A-T Python SDK和A2A-T Java SDK两种，是 A2A-T 协议的 Pyt
 
 - A2A-T Python SDK
 
-[安装和配置方式见 Python SDK 的用户指南](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+[安装和配置方式见 Python SDK 的用户指南](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
 
 Python SDK 源码位于 `a2a-t-sdk` 仓库，端到端演示样例位于 `a2a-t-samples` 仓库。SDK 自身要求 Python 3.12+，当前样例仓按照其 README 要求使用 Python 3.14。
 
@@ -774,13 +774,13 @@ Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 1
 
 ### 3.1.1 启动服务
 #### 3.1.1.1 启动注册中心服务
-[启动方式见注册中心的用户指南](https://gitcode.com/OpenAN/registry-center/blob/main/docs/zh/%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#%E5%90%AF%E5%8A%A8cli)
+[启动方式见注册中心的用户指南](https://github.com/project-openan/registry-center/blob/main/docs/zh/%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#%E5%90%AF%E5%8A%A8cli)
 
 #### 3.1.1.2 启动编排中心后端服务
-[启动方式见编排中心的用户指南](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#222-%E5%90%AF%E5%8A%A8%E7%BC%96%E6%8E%92%E4%B8%AD%E5%BF%83%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1)
+[启动方式见编排中心的用户指南](https://github.com/project-openan/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#222-%E5%90%AF%E5%8A%A8%E7%BC%96%E6%8E%92%E4%B8%AD%E5%BF%83%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1)
 
 #### 3.1.1.3 启动编排中心前端界面
-[启动方式见编排中心的用户指南](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#223-%E5%AE%89%E8%A3%85%E5%89%8D%E7%AB%AF%E4%BE%9D%E8%B5%96%E5%B9%B6%E5%90%AF%E5%8A%A8)
+[启动方式见编排中心的用户指南](https://github.com/project-openan/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#223-%E5%AE%89%E8%A3%85%E5%89%8D%E7%AB%AF%E4%BE%9D%E8%B5%96%E5%B9%B6%E5%90%AF%E5%8A%A8)
 
 ### 3.1.2 示例Agent介绍
  	 
@@ -852,7 +852,7 @@ python start_agents_server.py
 
 4. 创建工作流。
    
-单击 `+` 按钮，选择创建方式：([具体创建流程见编排中心用户指南](https://gitcode.com/OpenAN/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md))
+单击 `+` 按钮，选择创建方式：([具体创建流程见编排中心用户指南](https://github.com/project-openan/orchestration-center/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md#3-%E4%BD%BF%E7%94%A8))
 
 | 方式 | 操作说明 |
 | --- | --- |
@@ -860,7 +860,7 @@ python start_agents_server.py
 | 手动编排 | 将 Agent 卡片拖拽到画布，通过连线定义执行顺序 |
 | 自然语言生成 | 输入业务意图描述，后台自动编排生成 PSOP |
 
-5. 执行工作流
+1. 执行工作流
 - 输入用户意图，单击“检索工作流”按钮
 - 选择匹配的 PSOP
 - 单击 `▶` 按钮执行，右侧区域实时显示执行过程
@@ -937,8 +937,8 @@ cd {项目路径}/a2a-t-samples/samples/subscribe_incident
 
 Hello World 示例用于验证最小链路，Subscribe Incident 示例用于验证 incident 订阅场景下的多轮协商。详细说明见：
 
-- [Python SDK 用户指南](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
-- [Python SDK 开发指南](https://gitcode.com/OpenAN/a2a-t-sdk/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
+- [Python SDK 用户指南](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+- [Python SDK 开发指南](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
 
 ### 3.2.2 A2A-T Java SDK
 

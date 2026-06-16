@@ -5,10 +5,10 @@
 OpenAN docs仓包含了快速入门（包含项目描述、软件安装指南、快速入门操作）、安全技术白皮书、RN（Release Notes）文档。
 
 ## OpenAN文档地址
-- 快速入门、安全技术白皮书、RN：https://gitcode.com/OpenAN/docs
-- 注册中心用户指南、开发指南、API参考、安全能力指南：https://gitcode.com/OpenAN/registry-center/tree/main/docs
-- 编排中心用户指南、开发指南、API参考、：https://gitcode.com/OpenAN/orchestration-center/tree/main/docs
-- A2A-T Python SDK用户指南、开发指南：https://gitcode.com/OpenAN/a2a-t-sdk/tree/main/docs
+- 快速入门、安全技术白皮书、RN：https://github.com/project-openan/docs
+- 注册中心用户指南、开发指南、API参考、安全能力指南：https://github.com/project-openan/registry-center/tree/main/docs
+- 编排中心用户指南、开发指南、API参考：https://github.com/project-openan/orchestration-center/tree/main/docs
+- A2A-T Python SDK用户指南、开发指南：https://github.com/project-openan/a2a-t-sdk/tree/main/docs
 - A2A-T Java SDK用户指南、开发指南：https://gitcode.com/OpenAN/a2a-t-java/tree/main/docs
 
 ## 参与贡献

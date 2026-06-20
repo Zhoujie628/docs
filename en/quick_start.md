@@ -253,7 +253,6 @@ su - postgres # Switch to postgres user
 su - postgres
 
 # Start in foreground
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
 /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/data/logfile start
 
 # Add system environment variable
@@ -396,26 +395,16 @@ npm --version
 
 ## 2.3 registry-center Offline Installation Steps
 ![[photo]](figures/install-registry-center-flow.png)
-1.Prepare the installation package.
-
-Download the registry-center source code: [registry-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/4506a90cd7fc)
-
-Download the offline service dependency package: [wheels.zip](https://pan.quark.cn/s/957150b18c0a)
-
-Create a `/registry-center` folder in the temporary directory on the target server, and transfer the registry-center source code and offline service dependency package to this directory:
+1.Get the source code.
 
 ```bash
-mkdir /tmp/registry-center
-cd /tmp/registry-center
-unzip registry-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./registry-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/registry-center.git
+cd registry-center
 ```
 
 2.Create virtual environment.
 
 ```bash
-cd registry-center-main-a2a1.0-20260430-release
-
 # Create virtual environment using installed Python 3.12
 python3 -m venv venv --copies
 ```
@@ -429,16 +418,16 @@ source venv/bin/activate
 
 After activation, the command line prefix will display `(venv)`.
 
-4.Install dependencies offline.
+4.Install dependencies.
 
 ```bash
-# Install all dependencies offline from the wheels folder
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# Install all dependencies after activating the virtual environment
+pip install -r ./requirements.txt
 ```
 
 5.Service installation configuration (optional).
 
-You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file. In offline installation mode, you do not need to modify this configuration file
+You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file.
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -455,8 +444,8 @@ PYTHON_PATH=
 # Service name
 SERVICE_NAME=registry-center
 
-# Whether to auto-install dependencies; in offline mode, prepare dependency packages yourself and set to false; when true, pip command will be used to download and install dependencies
-INSTALL_DEPS=false
+# Whether to auto-install dependencies (recommended: true, use pip install)
+INSTALL_DEPS=true
 ```
 
 > To exit vi: press the Esc key, type :wq!
@@ -544,7 +533,7 @@ systemctl stop registry-center
 journalctl -u registry-center
 
 # Track logs in real time
-journalctl -u registry-center
+journalctl -u registry-center -f
 ```
 
 12.Uninstall service.
@@ -559,26 +548,16 @@ sudo ./bin/install_service.sh uninstall
 ## 2.4 orchestration-center Offline Installation Steps
 ![[photo]](figures/install-orchestration-center-flow.png)
 
-1.Prepare the installation package.
-
-Download the orchestration-center source code: [orchestration-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/346356c6a6aa)
-
-Download the offline service dependency package: [wheels.zip](https://pan.quark.cn/s/7488f63ec3f6)
-
-Create a `/orchestration-center` folder in the temporary directory on the target server, and transfer the orchestration-center source code and offline service dependency package to this directory:
+1.Get the source code.
 
 ```bash
-mkdir /tmp/orchestration-center
-cd /tmp/orchestration-center
-unzip orchestration-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./orchestration-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/orchestration-center.git
+cd orchestration-center
 ```
 
 2.Create virtual environment.
 
 ```bash
-cd orchestration-center-main-a2a1.0-20260430-release
-
 # Create virtual environment using installed Python 3.12
 python3 -m venv venv --copies
 ```
@@ -592,16 +571,16 @@ source venv/bin/activate
 
 After activation, the command line prefix will display `(venv)`.
 
-4.Install dependencies offline.
+4.Install dependencies.
 
 ```bash
-# Install all dependencies offline from the wheels folder
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# Install all dependencies after activating the virtual environment
+pip install -r ./requirements.txt
 ```
 
 5.Service installation configuration (optional).
 
-You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file. In offline installation mode, you do not need to modify this configuration file
+You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file.
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -618,8 +597,8 @@ PYTHON_PATH=
 # Service name
 SERVICE_NAME=orchestration-center
 
-# Whether to auto-install dependencies; in offline mode, prepare dependency packages yourself and set to false; when true, pip command will be used to download and install dependencies
-INSTALL_DEPS=false
+# Whether to auto-install dependencies (recommended: true, use pip install)
+INSTALL_DEPS=true
 ```
 
 > To exit vi: press the Esc key, type :wq!
@@ -697,7 +676,7 @@ systemctl stop orchestration-center
 journalctl -u orchestration-center
 
 # Track logs in real time
-journalctl -u orchestration-center
+journalctl -u orchestration-center -f
 ```
 
 12.Uninstall service.
@@ -826,7 +805,7 @@ The following video demonstrates the complete multi-Agent collaboration flow in 
 To quickly experience the complete flow, you can start the example Agent services included in the project.
 ```bash
 cd {project path}/orchestration-center/samples
-python start_agents_server.py
+python3 start_agents_server.py
 ```
 This script will:
 - Register multiple example Agents with the registry-center.

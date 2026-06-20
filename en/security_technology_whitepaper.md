@@ -648,7 +648,7 @@ OpenAN security design references the following security standards:
 | Elasticsearch Security | TLS configuration, authentication and authorization reference | https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html |
 | Apache Kafka Security | Network isolation, authentication encryption reference | https://kafka.apache.org/documentation/#security |
 | NIST SP 800-53 | Security control measures standard | https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final |
-| PostgreSQL Security | Database security configuration reference | https://www.postgresql.org/docs/current/security.html |
+| PostgreSQL Security | Database security configuration reference | https://www.postgresql.org/docs/current/client-authentication.html |
 
 ### Security Configuration Checklist
 

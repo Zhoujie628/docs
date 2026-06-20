@@ -255,7 +255,6 @@ su - postgres # 切换至postgres用户
 su - postgres
 
 # 前台启动
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
 /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/data/logfile start
 
 # 添加系统环境变量
@@ -398,26 +397,16 @@ npm --version
 
 ## 2.3 注册中心服务离线安装步骤
 ![[photo]](figures/install-registry-center-flow.png)
-1.准备安装包。
-
-下载注册中心源码：[registry-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/4506a90cd7fc)
-
-下载离线服务依赖包：[wheels.zip](https://pan.quark.cn/s/957150b18c0a)
-
-在目标服务器的临时目录下创建`/registry-center`文件夹，将 registry-center 源码和离线服务依赖包传输到该目录下：
+1.获取源码。
 
 ```bash
-mkdir /tmp/registry-center
-cd /tmp/registry-center
-unzip registry-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./registry-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/registry-center.git
+cd registry-center
 ```
 
 2.创建虚拟环境。
 
 ```bash
-cd registry-center-main-a2a1.0-20260430-release
-
 # 使用已安装的Python 3.12创建虚拟环境
 python3 -m venv venv --copies
 ```
@@ -431,16 +420,16 @@ source venv/bin/activate
 
 激活后，命令行前缀会显示 `(venv)`。
 
-4.离线安装依赖。
+4.安装依赖。
 
 ```bash
-# 从wheels文件夹离线安装所有依赖
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# 激活虚拟环境后安装依赖
+pip install -r ./requirements.txt
 ```
 
 5.服务安装配置（可选）。
 
-可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等，离线安装模式下可不修改此配置文件
+可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等。
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -457,8 +446,8 @@ PYTHON_PATH=
 # 服务名称
 SERVICE_NAME=registry-center
 
-# 是否自动安装依赖，离线状态下需自行准备依赖包，设置为false；为true时将使用pip命令下载安装依赖包
-INSTALL_DEPS=false
+# 是否自动安装依赖（推荐设置为true，使用pip安装）
+INSTALL_DEPS=true
 ```
 
 > 退出vi：按下Esc按键，输入:wq!
@@ -546,7 +535,7 @@ systemctl stop registry-center
 journalctl -u registry-center
 
 # 实时追踪日志
-journalctl -u registry-center
+journalctl -u registry-center -f
 ```
 
 12.卸载服务。
@@ -561,26 +550,16 @@ sudo ./bin/install_service.sh uninstall
 ## 2.4 编排中心服务离线安装步骤
 ![[photo]](figures/install-orchestration-center-flow.png)
 
-1.准备安装包。
-
-下载编排中心源码：[orchestration-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/346356c6a6aa)
-
-下载离线服务依赖包：[wheels.zip](https://pan.quark.cn/s/7488f63ec3f6)
-
-在目标服务器的临时目录下创建`/orchestration-center`文件夹，将 orchestration-center 源码和离线服务依赖包传输到该目录下：
+1.获取源码。
 
 ```bash
-mkdir /tmp/orchestration-center
-cd /tmp/orchestration-center
-unzip orchestration-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./orchestration-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/orchestration-center.git
+cd orchestration-center
 ```
 
 2.创建虚拟环境。
 
 ```bash
-cd orchestration-center-main-a2a1.0-20260430-release
-
 # 使用已安装的Python 3.12创建虚拟环境
 python3 -m venv venv --copies
 ```
@@ -594,16 +573,16 @@ source venv/bin/activate
 
 激活后，命令行前缀会显示 `(venv)`。
 
-4.离线安装依赖。
+4.安装依赖。
 
 ```bash
-# 从wheels文件夹离线安装所有依赖
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# 激活虚拟环境后安装依赖
+pip install -r ./requirements.txt
 ```
 
 5.服务安装配置（可选）。
 
-可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等，离线安装模式下可不修改此配置文件
+可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等。
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -620,8 +599,8 @@ PYTHON_PATH=
 # 服务名称
 SERVICE_NAME=orchestration-center
 
-# 是否自动安装依赖，离线状态下需自行准备依赖包，设置为false；为true时将使用pip命令下载安装依赖包
-INSTALL_DEPS=false
+# 是否自动安装依赖（推荐设置为true，使用pip安装）
+INSTALL_DEPS=true
 ```
 
 > 退出vi：按下Esc按键，输入:wq!
@@ -699,7 +678,7 @@ systemctl stop orchestration-center
 journalctl -u orchestration-center
 
 # 实时追踪日志
-journalctl -u orchestration-center
+journalctl -u orchestration-center -f
 ```
 
 12.卸载服务。
@@ -828,7 +807,7 @@ Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 1
 为了快速体验完整流程，可以启动项目自带的示例 Agent 服务。
 ```bash
 cd {项目路径}/orchestration-center/samples
-python start_agents_server.py
+python3 start_agents_server.py
 ```
 该脚本会：
 - 向注册中心注册多个示例 Agent。

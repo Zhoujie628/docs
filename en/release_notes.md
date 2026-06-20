@@ -802,7 +802,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Deliverables
 
-The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://github.com/project-openan/a2a-t-java).
+The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://gitcode.com/OpenAN/a2a-t-java).
 
 **Table 1** A2A-T Java SDK v0.1.8 Deliverable List
 

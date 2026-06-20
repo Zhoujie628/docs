@@ -640,7 +640,7 @@ The initial release of orchestration-center only provides source code, without b
 
 > **Note:**
 >
-> - The backend service is started via `python -m orchestrate.start`, defaulting to listening on `127.0.0.1:60000`.
+> - The backend service is started via `python -m orchestrate.start`, defaulting to listening on `127.0.0.1:5001`.
 > - The frontend service is started via `npm run dev`, defaulting to listening on `localhost:3003`.
 > - Sample Agents are started via `python -m samples.start_agents_server`, as optional components, but workflow execution depends on sample Agents providing A2A Agent endpoints.
 > - Defaults to file storage mode (persistence_mode=file), with data saved in the {installation directory}/data/workflow_storage directory. To switch to PostgreSQL, configure persistence_mode=postgresql and modify the database connection information in {installation directory}/etc/conf/db_config.json.

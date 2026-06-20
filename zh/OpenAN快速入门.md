@@ -116,7 +116,7 @@ ldd --version
 | ---------- | ---------- |----------| ---------------------------------------------------------------- |
 | Python     | >= 3.10.15 | 项目开发语言   | https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz     |
 | PostgreSQL | >= 16.13   | 数据库存储服务  | https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz |
-| NodeJS     | >= 22.19.0 | 编排中心前端依赖 | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
+| NodeJS     | >= 20.19 | 编排中心前端依赖 | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
 
 > 各组件离线安装指导如下，如果系统已有组件且版本已满足则可跳过此指导步骤。数据库此处以PostgreSQL为例，用户可根据实际场景选择数据库。
 
@@ -484,7 +484,7 @@ chmod +x ./bin/*.sh
 8.安装服务到指定目录。
 
 ```bash
-# 安装服务到步骤3.5中指定的INSTALL_DIR目录
+# 安装服务到步骤2.3.5中指定的INSTALL_DIR目录
 sudo ./bin/install_service.sh install
 
 # 执行成功后将回显成功信息：
@@ -628,7 +628,7 @@ INSTALL_DEPS=false
 
 6.修改数据库连接配置。
 
-修改编排中心配置文件： `./etc/conf/db_config.conf`
+修改编排中心配置文件： `./etc/conf/db_config.json`
 
 - 修改`host`为postgressql数据库所在节点IP
 
@@ -646,7 +646,7 @@ chmod +x ./bin/*.sh
 8.安装服务到指定目录。
 
 ```bash
-# 安装服务到步骤4.5中指定的INSTALL_DIR目录
+# 安装服务到步骤2.4.5中指定的INSTALL_DIR目录
 sudo ./bin/install_service.sh install
 
 # 执行成功后将回显成功信息：
@@ -897,14 +897,14 @@ cd {项目路径}/a2a-t-samples/samples/helloworld
 cp env.example .env
 # 编辑 .env，填写 A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 另开终端启动客户端：
 
 ```bash
 cd {项目路径}/a2a-t-samples/samples/helloworld
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 3. 运行 Subscribe Incident 示例。
@@ -914,14 +914,14 @@ cd {项目路径}/a2a-t-samples/samples/subscribe_incident
 cp env.example .env
 # 编辑 .env，填写 A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 另开终端启动客户端：
 
 ```bash
 cd {项目路径}/a2a-t-samples/samples/subscribe_incident
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 #### 3.2.1.2 核心流程验证

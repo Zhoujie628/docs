@@ -114,7 +114,7 @@ This project is developed based on Python 3.10. Before compiling and installing,
 | ---------- | ---------- |----------| ---------------------------------------------------------------- |
 | Python | >= 3.10.15 | Project development language | https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz     |
 | PostgreSQL | >= 16.13 | Database storage service | https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz |
-| NodeJS | >= 22.19.0 | orchestration-center frontend dependency | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
+| NodeJS | >= 20.19 | orchestration-center frontend dependency | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
 
 > The offline installation guides for each component are as follows. If the system already has the component and the version meets the requirements, you can skip these installation steps. PostgreSQL is used as the database example here; users can choose other databases based on actual scenarios.
 
@@ -482,7 +482,7 @@ chmod +x ./bin/*.sh
 8.Install service to the specified directory.
 
 ```bash
-# Install service to the INSTALL_DIR directory specified in step 3.5
+# Install service to the INSTALL_DIR directory specified in step 2.3.5
 sudo ./bin/install_service.sh install
 
 # After successful execution, the following success message will be displayed:
@@ -626,7 +626,7 @@ INSTALL_DEPS=false
 
 6.Modify database connection configuration.
 
-Modify the orchestration-center configuration file: `./etc/conf/db_config.conf`
+Modify the orchestration-center configuration file: `./etc/conf/db_config.json`
 
 - Change `host` to the IP of the PostgreSQL database node
 
@@ -644,7 +644,7 @@ chmod +x ./bin/*.sh
 8.Install service to the specified directory.
 
 ```bash
-# Install service to the INSTALL_DIR directory specified in step 4.5
+# Install service to the INSTALL_DIR directory specified in step 2.4.5
 sudo ./bin/install_service.sh install
 
 # After successful execution, the following success message will be displayed:
@@ -895,14 +895,14 @@ cd {project path}/a2a-t-samples/samples/helloworld
 cp env.example .env
 # Edit .env, fill in A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 Open another terminal to start the client:
 
 ```bash
 cd {project path}/a2a-t-samples/samples/helloworld
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 3.Run the Subscribe Incident example.
@@ -912,14 +912,14 @@ cd {project path}/a2a-t-samples/samples/subscribe_incident
 cp env.example .env
 # Edit .env, fill in A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 Open another terminal to start the client:
 
 ```bash
 cd {project path}/a2a-t-samples/samples/subscribe_incident
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 #### 3.2.1.2 Core Flow Verification

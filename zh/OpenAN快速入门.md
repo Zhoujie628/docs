@@ -395,12 +395,12 @@ npm --version
 
 ---
 
-## 2.3 注册中心服务离线安装步骤
+## 2.3 注册中心服务安装步骤
 ![[photo]](figures/install-registry-center-flow.png)
 1.获取源码。
 
 ```bash
-git clone https://github.com/project-openan/registry-center.git
+git clone https://gitcode.com/OpenAN/registry-center.git
 cd registry-center
 ```
 
@@ -547,13 +547,13 @@ sudo ./bin/install_service.sh uninstall
 
 ---
 
-## 2.4 编排中心服务离线安装步骤
+## 2.4 编排中心服务安装步骤
 ![[photo]](figures/install-orchestration-center-flow.png)
 
 1.获取源码。
 
 ```bash
-git clone https://github.com/project-openan/orchestration-center.git
+git clone https://gitcode.com/OpenAN/orchestration-center.git
 cd orchestration-center
 ```
 
@@ -692,7 +692,7 @@ sudo ./bin/install_service.sh uninstall
 
 ## 2.5 编排中心前端离线安装步骤
 
-前端代码已集成在编排中心代码仓中，完成[2.4章节](#24-编排中心服务离线安装步骤)后前端代码即已安装完成，只需启动前端服务即可。启动步骤如下：
+前端代码已集成在编排中心代码仓中，完成[2.4章节](#24-编排中心服务安装步骤)后前端代码即已安装完成，只需启动前端服务即可。启动步骤如下：
 
 进入编排中心安装目录下的 `workflow-designer` 目录：
 

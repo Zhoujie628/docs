@@ -393,12 +393,12 @@ npm --version
 
 ---
 
-## 2.3 registry-center Offline Installation Steps
+## 2.3 registry-center Installation Steps
 ![[photo]](figures/install-registry-center-flow.png)
 1.Get the source code.
 
 ```bash
-git clone https://github.com/project-openan/registry-center.git
+git clone https://gitcode.com/OpenAN/registry-center.git
 cd registry-center
 ```
 
@@ -545,13 +545,13 @@ sudo ./bin/install_service.sh uninstall
 
 ---
 
-## 2.4 orchestration-center Offline Installation Steps
+## 2.4 orchestration-center Installation Steps
 ![[photo]](figures/install-orchestration-center-flow.png)
 
 1.Get the source code.
 
 ```bash
-git clone https://github.com/project-openan/orchestration-center.git
+git clone https://gitcode.com/OpenAN/orchestration-center.git
 cd orchestration-center
 ```
 
@@ -690,7 +690,7 @@ sudo ./bin/install_service.sh uninstall
 
 ## 2.5 orchestration-center Frontend Offline Installation Steps
 
-The frontend code has been integrated into the orchestration-center code repository. After completing [Section 2.4](#24-orchestration-center-offline-installation-steps), the frontend code is already installed. You only need to start the frontend service. The startup steps are as follows:
+The frontend code has been integrated into the orchestration-center code repository. After completing [Section 2.4](#24-orchestration-center-installation-steps), the frontend code is already installed. You only need to start the frontend service. The startup steps are as follows:
 
 Enter the `workflow-designer` directory under the orchestration-center installation directory:
 

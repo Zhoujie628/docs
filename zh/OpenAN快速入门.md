@@ -43,7 +43,7 @@ OpenAN 包含 6 个模块，构成了完整的智能体协作框架：
 
 ## 2.1 系统要求
 
-本项目基于 Python 3.10 开发，编译安装前请确保目标系统满足以下要求：
+本项目基于 Python 3.12 开发，编译安装前请确保目标系统满足以下要求：
 
 ### 操作系统
 
@@ -53,7 +53,7 @@ OpenAN 包含 6 个模块，构成了完整的智能体协作框架：
 | CentOS / RHEL | 7.0+ |
 | Ubuntu | 18.04+ |
 | Debian | 10+ |
-> **说明**：Python 3.10 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.10 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
+> **说明**：Python 3.12 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.12 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
 
 
 ###  验证系统环境
@@ -74,7 +74,7 @@ ldd --version
 | GCC | 4.8.5 | 5.0+ | `gcc --version` |
 | Make | 3.81 | 4.0+ | `make --version` |
 | Glibc | 2.17 | 2.28+ | `ldd --version` |
-> **说明**：Python 3.10 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.10 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
+> **说明**：Python 3.12 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.12 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
 
 ### 硬件部署建议资源
 | 节点类型   | 主节点数量 | 从节点数量 | vCPU(个) | 内存(GB) | 硬盘        |
@@ -110,19 +110,19 @@ ldd --version
 
 ## 2.2 依赖安装
 
-本项目基于 Python 3.10 开发，编译安装前请确保相关组件依赖满足以下要求：
+本项目基于 Python 3.12 开发，编译安装前请确保相关组件依赖满足以下要求：
 
 | 组件       | 版本       | 说明       | 官网下载链接                                                     |
 | ---------- | ---------- |----------| ---------------------------------------------------------------- |
-| Python     | >= 3.10.15 | 项目开发语言   | https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz     |
-| PostgreSQL | >= 16.13   | 数据库存储服务  | https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz |
+| Python     | >= 3.12.11 | 项目开发语言   | https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz     |
+| PostgreSQL | >= 15.6    | 数据库存储服务  | https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz |
 | NodeJS     | >= 20.19 | 编排中心前端依赖 | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
 
 > 各组件离线安装指导如下，如果系统已有组件且版本已满足则可跳过此指导步骤。数据库此处以PostgreSQL为例，用户可根据实际场景选择数据库。
 
 ### 2.2.1 Python离线安装步骤
 
-先检查环境上是否已安装python，版本是否为3.10.15，如果是则跳过如下安装步骤。
+先检查环境上是否已安装python，版本是否为3.12.11，如果是则跳过如下安装步骤。
 ```bash
 python3 --version   # 检查python版本
 ```
@@ -134,23 +134,23 @@ python3 --version   # 检查python版本
 在可接通网络的Linux服务器上执行以下命令获取安装包，Windows系统则直接访问网页下载获取。
 
 ```bash
-wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
+wget https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz
 ```
 
-将 `Python-3.10.15.tgz` 传输到目标服务器。
+将 `Python-3.12.11.tgz` 传输到目标服务器。
 
 2.解压安装包。
 
 ```bash
-tar -xzf Python-3.10.15.tgz
-cd Python-3.10.15
+tar -xzf Python-3.12.11.tgz
+cd Python-3.12.11
 ```
 
 3.配置安装路径。
 
 ```bash
-# 安装到 /usr/local/python310，避免覆盖系统Python
-./configure --prefix=/usr/local/python310 --enable-optimizations
+# 安装到 /usr/local/python312，避免覆盖系统Python
+./configure --prefix=/usr/local/python312 --enable-optimizations
 ```
 
 4.编译安装。
@@ -164,22 +164,22 @@ sudo make altinstall
 
 ```bash
 # 创建python3软链接
-sudo ln -sf /usr/local/python310/bin/python3 /usr/local/bin/python3
+sudo ln -sf /usr/local/python312/bin/python3 /usr/local/bin/python3
 
 # 创建pip3软链接
-sudo ln -sf /usr/local/python310/bin/pip3 /usr/local/bin/pip3
+sudo ln -sf /usr/local/python312/bin/pip3 /usr/local/bin/pip3
 ```
 
 6.验证安装。
 
 ```bash
-python3 --version   # 应输出 Python 3.10.15
+python3 --version   # 应输出 Python 3.12.11
 pip3 --version
 ```
 
 **注意事项**
 
-- 安装路径 `/usr/local/python310` 不影响系统自带Python。
+- 安装路径 `/usr/local/python312` 不影响系统自带Python。
 - 软链接放在 `/usr/local/bin`，优先级低于 `/usr/bin`。
 - 系统自带的 `python` 或 `python2` 命令保持不变。
 
@@ -279,7 +279,7 @@ psql -l
 ```bash
 sudo tee /etc/systemd/system/postgresql.service << EOF
 [Unit]
-Description=PostgreSQL 16 Database Server
+Description=PostgreSQL 15 Database Server
 After=network.target
 
 [Service]
@@ -418,7 +418,7 @@ unzip wheels.zip -d ./registry-center-main-a2a1.0-20260430-release
 ```bash
 cd registry-center-main-a2a1.0-20260430-release
 
-# 使用已安装的Python 3.10创建虚拟环境
+# 使用已安装的Python 3.12创建虚拟环境
 python3 -m venv venv --copies
 ```
 
@@ -496,7 +496,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/registry-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 
@@ -563,7 +563,7 @@ sudo ./bin/install_service.sh uninstall
 
 1.准备安装包。
 
-下载注册中心源码：[orchestration-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/346356c6a6aa)
+下载编排中心源码：[orchestration-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/346356c6a6aa)
 
 下载离线服务依赖包：[wheels.zip](https://pan.quark.cn/s/7488f63ec3f6)
 
@@ -581,7 +581,7 @@ unzip wheels.zip -d ./orchestration-center-main-a2a1.0-20260430-release
 ```bash
 cd orchestration-center-main-a2a1.0-20260430-release
 
-# 使用已安装的Python 3.10创建虚拟环境
+# 使用已安装的Python 3.12创建虚拟环境
 python3 -m venv venv --copies
 ```
 
@@ -630,9 +630,9 @@ INSTALL_DEPS=false
 
 修改编排中心配置文件： `./etc/conf/db_config.json`
 
-- 修改`host`为postgressql数据库所在节点IP
+- 修改`host`为PostgreSQL数据库所在节点IP
 
-- 修改`port`为postgressql数据库端口号，默认为`5432`
+- 修改`port`为PostgreSQL数据库端口号，默认为`5432`
 
 - 用户名`user`密码、`password`按照数据库实际设置的情况进行修改
 
@@ -658,7 +658,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/orchestration-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 

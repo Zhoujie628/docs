@@ -543,7 +543,7 @@ The initial release of registry-center only provides source code, without binary
 
 | Software | Version Requirement | Purpose |
 |-----|---------|------|
-| Python | >= 3.10 | Registry-center service runtime environment |
+| Python | >= 3.12 | Registry-center service runtime environment |
 | PostgreSQL (optional) | >= 12 | Data persistence database; not required under file storage or SQLite storage mode |
 | Milvus (optional) | >= 2.6 | Vector database required for semantic search capability |
 

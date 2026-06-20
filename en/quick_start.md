@@ -44,7 +44,7 @@ The overall software installation process is as follows:
 
 ## 2.1 System Requirements
 
-This project is developed based on Python 3.10. Before compiling and installing, please ensure the target system meets the following requirements:
+This project is developed based on Python 3.12. Before compiling and installing, please ensure the target system meets the following requirements:
 
 ### Operating System
 
@@ -54,7 +54,7 @@ This project is developed based on Python 3.10. Before compiling and installing,
 | CentOS / RHEL | 7.0+ |
 | Ubuntu | 18.04+ |
 | Debian | 10+ |
-> **Note**: Python 3.10 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.10, and 2.28+ is recommended for better compatibility.
+> **Note**: Python 3.12 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.12, and 2.28+ is recommended for better compatibility.
 
 
 ###  Verify System Environment
@@ -75,7 +75,7 @@ ldd --version
 | GCC | 4.8.5 | 5.0+ | `gcc --version` |
 | Make | 3.81 | 4.0+ | `make --version` |
 | Glibc | 2.17 | 2.28+ | `ldd --version` |
-> **Note**: Python 3.10 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.10, and 2.28+ is recommended for better compatibility.
+> **Note**: Python 3.12 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.12, and 2.28+ is recommended for better compatibility.
 
 ### Recommended Hardware Deployment Resources
 | Node Type | Master Node Count | Worker Node Count | vCPU (cores) | Memory (GB) | Disk |
@@ -108,19 +108,19 @@ The bootstrap node needs the tar tool installed.
 
 ## 2.2 Dependency Installation
 
-This project is developed based on Python 3.10. Before compiling and installing, please ensure the relevant component dependencies meet the following requirements:
+This project is developed based on Python 3.12. Before compiling and installing, please ensure the relevant component dependencies meet the following requirements:
 
 | Component | Version | Description | Official Download Link |
 | ---------- | ---------- |----------| ---------------------------------------------------------------- |
-| Python | >= 3.10.15 | Project development language | https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz     |
-| PostgreSQL | >= 16.13 | Database storage service | https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz |
+| Python | >= 3.12.11 | Project development language | https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz     |
+| PostgreSQL | >= 15.6 | Database storage service | https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz |
 | NodeJS | >= 20.19 | orchestration-center frontend dependency | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
 
 > The offline installation guides for each component are as follows. If the system already has the component and the version meets the requirements, you can skip these installation steps. PostgreSQL is used as the database example here; users can choose other databases based on actual scenarios.
 
 ### 2.2.1 Python Offline Installation Steps
 
-First check whether Python is already installed on the environment and whether the version is 3.10.15. If so, skip the following installation steps.
+First check whether Python is already installed on the environment and whether the version is 3.12.11. If so, skip the following installation steps.
 ```bash
 python3 --version   # Check Python version
 ```
@@ -132,23 +132,23 @@ python3 --version   # Check Python version
 Execute the following command on a Linux server with network access to obtain the installation package. For Windows systems, visit the webpage directly to download.
 
 ```bash
-wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
+wget https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz
 ```
 
-Transfer `Python-3.10.15.tgz` to the target server.
+Transfer `Python-3.12.11.tgz` to the target server.
 
 2.Extract the installation package.
 
 ```bash
-tar -xzf Python-3.10.15.tgz
-cd Python-3.10.15
+tar -xzf Python-3.12.11.tgz
+cd Python-3.12.11
 ```
 
 3.Configure the installation path.
 
 ```bash
-# Install to /usr/local/python310, avoid overwriting system Python
-./configure --prefix=/usr/local/python310 --enable-optimizations
+# Install to /usr/local/python312, avoid overwriting system Python
+./configure --prefix=/usr/local/python312 --enable-optimizations
 ```
 
 4.Compile and install.
@@ -162,22 +162,22 @@ sudo make altinstall
 
 ```bash
 # Create python3 symbolic link
-sudo ln -sf /usr/local/python310/bin/python3 /usr/local/bin/python3
+sudo ln -sf /usr/local/python312/bin/python3 /usr/local/bin/python3
 
 # Create pip3 symbolic link
-sudo ln -sf /usr/local/python310/bin/pip3 /usr/local/bin/pip3
+sudo ln -sf /usr/local/python312/bin/pip3 /usr/local/bin/pip3
 ```
 
 6.Verify installation.
 
 ```bash
-python3 --version   # Should output Python 3.10.15
+python3 --version   # Should output Python 3.12.11
 pip3 --version
 ```
 
 **Notes**
 
-- The installation path `/usr/local/python310` does not affect the system's built-in Python.
+- The installation path `/usr/local/python312` does not affect the system's built-in Python.
 - Symbolic links are placed in `/usr/local/bin`, with lower priority than `/usr/bin`.
 - The system's built-in `python` or `python2` commands remain unchanged.
 
@@ -277,7 +277,7 @@ To exit the `postgres` user, type `exit`.
 ```bash
 sudo tee /etc/systemd/system/postgresql.service << EOF
 [Unit]
-Description=PostgreSQL 16 Database Server
+Description=PostgreSQL 15 Database Server
 After=network.target
 
 [Service]
@@ -416,7 +416,7 @@ unzip wheels.zip -d ./registry-center-main-a2a1.0-20260430-release
 ```bash
 cd registry-center-main-a2a1.0-20260430-release
 
-# Create virtual environment using installed Python 3.10
+# Create virtual environment using installed Python 3.12
 python3 -m venv venv --copies
 ```
 
@@ -494,7 +494,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/registry-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 
@@ -579,7 +579,7 @@ unzip wheels.zip -d ./orchestration-center-main-a2a1.0-20260430-release
 ```bash
 cd orchestration-center-main-a2a1.0-20260430-release
 
-# Create virtual environment using installed Python 3.10
+# Create virtual environment using installed Python 3.12
 python3 -m venv venv --copies
 ```
 
@@ -656,7 +656,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/orchestration-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 

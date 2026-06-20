@@ -400,7 +400,7 @@ npm --version
 1.获取源码。
 
 ```bash
-git clone https://gitcode.com/OpenAN/registry-center.git
+git clone https://github.com/project-openan/registry-center.git
 cd registry-center
 ```
 
@@ -553,7 +553,7 @@ sudo ./bin/install_service.sh uninstall
 1.获取源码。
 
 ```bash
-git clone https://gitcode.com/OpenAN/orchestration-center.git
+git clone https://github.com/project-openan/orchestration-center.git
 cd orchestration-center
 ```
 
@@ -718,7 +718,7 @@ Python SDK 源码位于 `a2a-t-sdk` 仓库，端到端演示样例位于 `a2a-t-
 
 - A2A-T Java SDK
 
-[安装和配置方式见 Java SDK 的用户指南](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+[安装和配置方式见 Java SDK 的用户指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
 
 Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 17+、Maven，并配置可用的 LLM 服务地址和 API Key。
 
@@ -974,5 +974,5 @@ java @a2a-t-sample/target/client.javaargs.txt
 
 详细说明见：
 
-- [Java SDK 用户指南](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
-- [Java SDK 开发指南](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
+- [Java SDK 用户指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+- [Java SDK 开发指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)

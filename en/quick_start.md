@@ -398,7 +398,7 @@ npm --version
 1.Get the source code.
 
 ```bash
-git clone https://gitcode.com/OpenAN/registry-center.git
+git clone https://github.com/project-openan/registry-center.git
 cd registry-center
 ```
 
@@ -551,7 +551,7 @@ sudo ./bin/install_service.sh uninstall
 1.Get the source code.
 
 ```bash
-git clone https://gitcode.com/OpenAN/orchestration-center.git
+git clone https://github.com/project-openan/orchestration-center.git
 cd orchestration-center
 ```
 
@@ -716,7 +716,7 @@ The Python SDK source code is in the `a2a-t-sdk` repository, and the end-to-end 
 
 - A2A-T Java SDK
 
-[Installation and configuration instructions are in the Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md)
+[Installation and configuration instructions are in the Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md)
 
 The Java SDK source code and examples are both in the `a2a-t-java` repository. Before running, you need to prepare JDK 17+, Maven, and configure an available LLM service address and API Key.
 
@@ -972,5 +972,5 @@ After completing the above steps, you can experience the Java SDK's core capabil
 
 For detailed instructions, see:
 
-- [Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md)
-- [Java SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/developer_guide.md)
+- [Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md)
+- [Java SDK Developer Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/developer_guide.md)

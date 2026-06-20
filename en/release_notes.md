@@ -26,7 +26,7 @@ This version is the first release of OpenAN, with modules including registry-cen
   
 - The main features of A2A-T Python SDK are shown in [Table 3](#table_a2at_sdk_features). For detailed information on feature descriptions, please refer to [A2A-T Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md).
   
-- The main features of A2A-T Java SDK are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [A2A-T Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md).
+- The main features of A2A-T Java SDK are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [A2A-T Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md).
 
 **Table 1** Registry-center Feature List<a id="table_registry_features" href="#"></a>
 <table border="0">
@@ -802,7 +802,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Deliverables
 
-The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://gitcode.com/OpenAN/a2a-t-java).
+The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://github.com/project-openan/a2a-t-sdk-java).
 
 **Table 1** A2A-T Java SDK v0.1.8 Deliverable List
 

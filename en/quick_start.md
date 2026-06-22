@@ -44,7 +44,7 @@ The overall software installation process is as follows:
 
 ## 2.1 System Requirements
 
-This project is developed based on Python 3.10. Before compiling and installing, please ensure the target system meets the following requirements:
+This project is developed based on Python 3.12. Before compiling and installing, please ensure the target system meets the following requirements:
 
 ### Operating System
 
@@ -54,7 +54,7 @@ This project is developed based on Python 3.10. Before compiling and installing,
 | CentOS / RHEL | 7.0+ |
 | Ubuntu | 18.04+ |
 | Debian | 10+ |
-> **Note**: Python 3.10 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.10, and 2.28+ is recommended for better compatibility.
+> **Note**: Python 3.12 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.12, and 2.28+ is recommended for better compatibility.
 
 
 ###  Verify System Environment
@@ -75,7 +75,7 @@ ldd --version
 | GCC | 4.8.5 | 5.0+ | `gcc --version` |
 | Make | 3.81 | 4.0+ | `make --version` |
 | Glibc | 2.17 | 2.28+ | `ldd --version` |
-> **Note**: Python 3.10 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.10, and 2.28+ is recommended for better compatibility.
+> **Note**: Python 3.12 compilation requires a compiler supporting the C11 standard. GCC 5.0+ provides better optimization support. Glibc 2.17 is the minimum requirement for Python 3.12, and 2.28+ is recommended for better compatibility.
 
 ### Recommended Hardware Deployment Resources
 | Node Type | Master Node Count | Worker Node Count | vCPU (cores) | Memory (GB) | Disk |
@@ -108,19 +108,19 @@ The bootstrap node needs the tar tool installed.
 
 ## 2.2 Dependency Installation
 
-This project is developed based on Python 3.10. Before compiling and installing, please ensure the relevant component dependencies meet the following requirements:
+This project is developed based on Python 3.12. Before compiling and installing, please ensure the relevant component dependencies meet the following requirements:
 
 | Component | Version | Description | Official Download Link |
 | ---------- | ---------- |----------| ---------------------------------------------------------------- |
-| Python | >= 3.10.15 | Project development language | https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz     |
-| PostgreSQL | >= 16.13 | Database storage service | https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz |
-| NodeJS | >= 22.19.0 | orchestration-center frontend dependency | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
+| Python | >= 3.12.11 | Project development language | https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz     |
+| PostgreSQL | >= 15.6 | Database storage service | https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz |
+| NodeJS | >= 20.19 | orchestration-center frontend dependency | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
 
 > The offline installation guides for each component are as follows. If the system already has the component and the version meets the requirements, you can skip these installation steps. PostgreSQL is used as the database example here; users can choose other databases based on actual scenarios.
 
 ### 2.2.1 Python Offline Installation Steps
 
-First check whether Python is already installed on the environment and whether the version is 3.10.15. If so, skip the following installation steps.
+First check whether Python is already installed on the environment and whether the version is 3.12.11. If so, skip the following installation steps.
 ```bash
 python3 --version   # Check Python version
 ```
@@ -132,23 +132,23 @@ python3 --version   # Check Python version
 Execute the following command on a Linux server with network access to obtain the installation package. For Windows systems, visit the webpage directly to download.
 
 ```bash
-wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
+wget https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz
 ```
 
-Transfer `Python-3.10.15.tgz` to the target server.
+Transfer `Python-3.12.11.tgz` to the target server.
 
 2.Extract the installation package.
 
 ```bash
-tar -xzf Python-3.10.15.tgz
-cd Python-3.10.15
+tar -xzf Python-3.12.11.tgz
+cd Python-3.12.11
 ```
 
 3.Configure the installation path.
 
 ```bash
-# Install to /usr/local/python310, avoid overwriting system Python
-./configure --prefix=/usr/local/python310 --enable-optimizations
+# Install to /usr/local/python312, avoid overwriting system Python
+./configure --prefix=/usr/local/python312 --enable-optimizations
 ```
 
 4.Compile and install.
@@ -162,22 +162,22 @@ sudo make altinstall
 
 ```bash
 # Create python3 symbolic link
-sudo ln -sf /usr/local/python310/bin/python3 /usr/local/bin/python3
+sudo ln -sf /usr/local/python312/bin/python3 /usr/local/bin/python3
 
 # Create pip3 symbolic link
-sudo ln -sf /usr/local/python310/bin/pip3 /usr/local/bin/pip3
+sudo ln -sf /usr/local/python312/bin/pip3 /usr/local/bin/pip3
 ```
 
 6.Verify installation.
 
 ```bash
-python3 --version   # Should output Python 3.10.15
+python3 --version   # Should output Python 3.12.11
 pip3 --version
 ```
 
 **Notes**
 
-- The installation path `/usr/local/python310` does not affect the system's built-in Python.
+- The installation path `/usr/local/python312` does not affect the system's built-in Python.
 - Symbolic links are placed in `/usr/local/bin`, with lower priority than `/usr/bin`.
 - The system's built-in `python` or `python2` commands remain unchanged.
 
@@ -253,7 +253,6 @@ su - postgres # Switch to postgres user
 su - postgres
 
 # Start in foreground
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
 /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/data/logfile start
 
 # Add system environment variable
@@ -277,7 +276,7 @@ To exit the `postgres` user, type `exit`.
 ```bash
 sudo tee /etc/systemd/system/postgresql.service << EOF
 [Unit]
-Description=PostgreSQL 16 Database Server
+Description=PostgreSQL 15 Database Server
 After=network.target
 
 [Service]
@@ -394,29 +393,19 @@ npm --version
 
 ---
 
-## 2.3 registry-center Offline Installation Steps
+## 2.3 registry-center Installation Steps
 ![[photo]](figures/install-registry-center-flow.png)
-1.Prepare the installation package.
-
-Download the registry-center source code: [registry-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/4506a90cd7fc)
-
-Download the offline service dependency package: [wheels.zip](https://pan.quark.cn/s/957150b18c0a)
-
-Create a `/registry-center` folder in the temporary directory on the target server, and transfer the registry-center source code and offline service dependency package to this directory:
+1.Get the source code.
 
 ```bash
-mkdir /tmp/registry-center
-cd /tmp/registry-center
-unzip registry-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./registry-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/registry-center.git
+cd registry-center
 ```
 
 2.Create virtual environment.
 
 ```bash
-cd registry-center-main-a2a1.0-20260430-release
-
-# Create virtual environment using installed Python 3.10
+# Create virtual environment using installed Python 3.12
 python3 -m venv venv --copies
 ```
 
@@ -429,16 +418,16 @@ source venv/bin/activate
 
 After activation, the command line prefix will display `(venv)`.
 
-4.Install dependencies offline.
+4.Install dependencies.
 
 ```bash
-# Install all dependencies offline from the wheels folder
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# Install all dependencies after activating the virtual environment
+pip install -r ./requirements.txt
 ```
 
 5.Service installation configuration (optional).
 
-You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file. In offline installation mode, you do not need to modify this configuration file
+You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file.
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -455,8 +444,8 @@ PYTHON_PATH=
 # Service name
 SERVICE_NAME=registry-center
 
-# Whether to auto-install dependencies; in offline mode, prepare dependency packages yourself and set to false; when true, pip command will be used to download and install dependencies
-INSTALL_DEPS=false
+# Whether to auto-install dependencies (recommended: true, use pip install)
+INSTALL_DEPS=true
 ```
 
 > To exit vi: press the Esc key, type :wq!
@@ -482,7 +471,7 @@ chmod +x ./bin/*.sh
 8.Install service to the specified directory.
 
 ```bash
-# Install service to the INSTALL_DIR directory specified in step 3.5
+# Install service to the INSTALL_DIR directory specified in step 2.3.5
 sudo ./bin/install_service.sh install
 
 # After successful execution, the following success message will be displayed:
@@ -494,7 +483,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/registry-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 
@@ -544,7 +533,7 @@ systemctl stop registry-center
 journalctl -u registry-center
 
 # Track logs in real time
-journalctl -u registry-center
+journalctl -u registry-center -f
 ```
 
 12.Uninstall service.
@@ -556,30 +545,20 @@ sudo ./bin/install_service.sh uninstall
 
 ---
 
-## 2.4 orchestration-center Offline Installation Steps
+## 2.4 orchestration-center Installation Steps
 ![[photo]](figures/install-orchestration-center-flow.png)
 
-1.Prepare the installation package.
-
-Download the orchestration-center source code: [orchestration-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/346356c6a6aa)
-
-Download the offline service dependency package: [wheels.zip](https://pan.quark.cn/s/7488f63ec3f6)
-
-Create a `/orchestration-center` folder in the temporary directory on the target server, and transfer the orchestration-center source code and offline service dependency package to this directory:
+1.Get the source code.
 
 ```bash
-mkdir /tmp/orchestration-center
-cd /tmp/orchestration-center
-unzip orchestration-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./orchestration-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/orchestration-center.git
+cd orchestration-center
 ```
 
 2.Create virtual environment.
 
 ```bash
-cd orchestration-center-main-a2a1.0-20260430-release
-
-# Create virtual environment using installed Python 3.10
+# Create virtual environment using installed Python 3.12
 python3 -m venv venv --copies
 ```
 
@@ -592,16 +571,16 @@ source venv/bin/activate
 
 After activation, the command line prefix will display `(venv)`.
 
-4.Install dependencies offline.
+4.Install dependencies.
 
 ```bash
-# Install all dependencies offline from the wheels folder
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# Install all dependencies after activating the virtual environment
+pip install -r ./requirements.txt
 ```
 
 5.Service installation configuration (optional).
 
-You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file. In offline installation mode, you do not need to modify this configuration file
+You can configure the service deployment directory and other settings in the `./etc/systemd/deploy.conf` file.
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -618,15 +597,15 @@ PYTHON_PATH=
 # Service name
 SERVICE_NAME=orchestration-center
 
-# Whether to auto-install dependencies; in offline mode, prepare dependency packages yourself and set to false; when true, pip command will be used to download and install dependencies
-INSTALL_DEPS=false
+# Whether to auto-install dependencies (recommended: true, use pip install)
+INSTALL_DEPS=true
 ```
 
 > To exit vi: press the Esc key, type :wq!
 
 6.Modify database connection configuration.
 
-Modify the orchestration-center configuration file: `./etc/conf/db_config.conf`
+Modify the orchestration-center configuration file: `./etc/conf/db_config.json`
 
 - Change `host` to the IP of the PostgreSQL database node
 
@@ -644,7 +623,7 @@ chmod +x ./bin/*.sh
 8.Install service to the specified directory.
 
 ```bash
-# Install service to the INSTALL_DIR directory specified in step 4.5
+# Install service to the INSTALL_DIR directory specified in step 2.4.5
 sudo ./bin/install_service.sh install
 
 # After successful execution, the following success message will be displayed:
@@ -656,7 +635,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/orchestration-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 
@@ -697,7 +676,7 @@ systemctl stop orchestration-center
 journalctl -u orchestration-center
 
 # Track logs in real time
-journalctl -u orchestration-center
+journalctl -u orchestration-center -f
 ```
 
 12.Uninstall service.
@@ -711,7 +690,7 @@ sudo ./bin/install_service.sh uninstall
 
 ## 2.5 orchestration-center Frontend Offline Installation Steps
 
-The frontend code has been integrated into the orchestration-center code repository. After completing [Section 2.4](#24-orchestration-center-offline-installation-steps), the frontend code is already installed. You only need to start the frontend service. The startup steps are as follows:
+The frontend code has been integrated into the orchestration-center code repository. After completing [Section 2.4](#24-orchestration-center-installation-steps), the frontend code is already installed. You only need to start the frontend service. The startup steps are as follows:
 
 Enter the `workflow-designer` directory under the orchestration-center installation directory:
 
@@ -737,7 +716,7 @@ The Python SDK source code is in the `a2a-t-sdk` repository, and the end-to-end 
 
 - A2A-T Java SDK
 
-[Installation and configuration instructions are in the Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md)
+[Installation and configuration instructions are in the Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md)
 
 The Java SDK source code and examples are both in the `a2a-t-java` repository. Before running, you need to prepare JDK 17+, Maven, and configure an available LLM service address and API Key.
 
@@ -826,7 +805,7 @@ The following video demonstrates the complete multi-Agent collaboration flow in 
 To quickly experience the complete flow, you can start the example Agent services included in the project.
 ```bash
 cd {project path}/orchestration-center/samples
-python start_agents_server.py
+python3 start_agents_server.py
 ```
 This script will:
 - Register multiple example Agents with the registry-center.
@@ -895,14 +874,14 @@ cd {project path}/a2a-t-samples/samples/helloworld
 cp env.example .env
 # Edit .env, fill in A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 Open another terminal to start the client:
 
 ```bash
 cd {project path}/a2a-t-samples/samples/helloworld
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 3.Run the Subscribe Incident example.
@@ -912,14 +891,14 @@ cd {project path}/a2a-t-samples/samples/subscribe_incident
 cp env.example .env
 # Edit .env, fill in A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 Open another terminal to start the client:
 
 ```bash
 cd {project path}/a2a-t-samples/samples/subscribe_incident
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 #### 3.2.1.2 Core Flow Verification
@@ -993,5 +972,5 @@ After completing the above steps, you can experience the Java SDK's core capabil
 
 For detailed instructions, see:
 
-- [Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md)
-- [Java SDK Developer Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/developer_guide.md)
+- [Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md)
+- [Java SDK Developer Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/developer_guide.md)

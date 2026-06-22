@@ -26,7 +26,7 @@ This version is the first release of OpenAN, with modules including registry-cen
   
 - The main features of A2A-T Python SDK are shown in [Table 3](#table_a2at_sdk_features). For detailed information on feature descriptions, please refer to [A2A-T Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md).
   
-- The main features of A2A-T Java SDK are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [A2A-T Java SDK User Guide](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/en/user_guide.md).
+- The main features of A2A-T Java SDK are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [A2A-T Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md).
 
 **Table 1** Registry-center Feature List<a id="table_registry_features" href="#"></a>
 <table border="0">
@@ -543,7 +543,7 @@ The initial release of registry-center only provides source code, without binary
 
 | Software | Version Requirement | Purpose |
 |-----|---------|------|
-| Python | >= 3.10 | Registry-center service runtime environment |
+| Python | >= 3.12 | Registry-center service runtime environment |
 | PostgreSQL (optional) | >= 12 | Data persistence database; not required under file storage or SQLite storage mode |
 | Milvus (optional) | >= 2.6 | Vector database required for semantic search capability |
 
@@ -640,7 +640,7 @@ The initial release of orchestration-center only provides source code, without b
 
 > **Note:**
 >
-> - The backend service is started via `python -m orchestrate.start`, defaulting to listening on `127.0.0.1:60000`.
+> - The backend service is started via `python -m orchestrate.start`, defaulting to listening on `127.0.0.1:5001`.
 > - The frontend service is started via `npm run dev`, defaulting to listening on `localhost:3003`.
 > - Sample Agents are started via `python -m samples.start_agents_server`, as optional components, but workflow execution depends on sample Agents providing A2A Agent endpoints.
 > - Defaults to file storage mode (persistence_mode=file), with data saved in the {installation directory}/data/workflow_storage directory. To switch to PostgreSQL, configure persistence_mode=postgresql and modify the database connection information in {installation directory}/etc/conf/db_config.json.
@@ -802,7 +802,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Deliverables
 
-The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://github.com/project-openan/a2a-t-java).
+The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://github.com/project-openan/a2a-t-sdk-java).
 
 **Table 1** A2A-T Java SDK v0.1.8 Deliverable List
 

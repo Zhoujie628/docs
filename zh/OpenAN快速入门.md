@@ -43,7 +43,7 @@ OpenAN 包含 6 个模块，构成了完整的智能体协作框架：
 
 ## 2.1 系统要求
 
-本项目基于 Python 3.10 开发，编译安装前请确保目标系统满足以下要求：
+本项目基于 Python 3.12 开发，编译安装前请确保目标系统满足以下要求：
 
 ### 操作系统
 
@@ -53,7 +53,7 @@ OpenAN 包含 6 个模块，构成了完整的智能体协作框架：
 | CentOS / RHEL | 7.0+ |
 | Ubuntu | 18.04+ |
 | Debian | 10+ |
-> **说明**：Python 3.10 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.10 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
+> **说明**：Python 3.12 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.12 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
 
 
 ###  验证系统环境
@@ -74,7 +74,7 @@ ldd --version
 | GCC | 4.8.5 | 5.0+ | `gcc --version` |
 | Make | 3.81 | 4.0+ | `make --version` |
 | Glibc | 2.17 | 2.28+ | `ldd --version` |
-> **说明**：Python 3.10 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.10 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
+> **说明**：Python 3.12 编译需要支持 C11 标准的编译器，GCC 5.0+ 可提供更好的优化支持。Glibc 2.17 是 Python 3.12 的最低要求，建议使用 2.28+ 以获得更好的兼容性。
 
 ### 硬件部署建议资源
 | 节点类型   | 主节点数量 | 从节点数量 | vCPU(个) | 内存(GB) | 硬盘        |
@@ -110,19 +110,19 @@ ldd --version
 
 ## 2.2 依赖安装
 
-本项目基于 Python 3.10 开发，编译安装前请确保相关组件依赖满足以下要求：
+本项目基于 Python 3.12 开发，编译安装前请确保相关组件依赖满足以下要求：
 
 | 组件       | 版本       | 说明       | 官网下载链接                                                     |
 | ---------- | ---------- |----------| ---------------------------------------------------------------- |
-| Python     | >= 3.10.15 | 项目开发语言   | https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz     |
-| PostgreSQL | >= 16.13   | 数据库存储服务  | https://ftp.postgresql.org/pub/source/v16.13/postgresql-16.13.tar.gz |
-| NodeJS     | >= 22.19.0 | 编排中心前端依赖 | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
+| Python     | >= 3.12.11 | 项目开发语言   | https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz     |
+| PostgreSQL | >= 15.6    | 数据库存储服务  | https://ftp.postgresql.org/pub/source/v15.6/postgresql-15.6.tar.gz |
+| NodeJS     | >= 20.19 | 编排中心前端依赖 | https://nodejs.org/dist/v22.19.0/node-v22.19.0-linux-x64.tar.xz   |
 
 > 各组件离线安装指导如下，如果系统已有组件且版本已满足则可跳过此指导步骤。数据库此处以PostgreSQL为例，用户可根据实际场景选择数据库。
 
 ### 2.2.1 Python离线安装步骤
 
-先检查环境上是否已安装python，版本是否为3.10.15，如果是则跳过如下安装步骤。
+先检查环境上是否已安装python，版本是否为3.12.11，如果是则跳过如下安装步骤。
 ```bash
 python3 --version   # 检查python版本
 ```
@@ -134,23 +134,23 @@ python3 --version   # 检查python版本
 在可接通网络的Linux服务器上执行以下命令获取安装包，Windows系统则直接访问网页下载获取。
 
 ```bash
-wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz
+wget https://www.python.org/ftp/python/3.12.11/Python-3.12.11.tgz
 ```
 
-将 `Python-3.10.15.tgz` 传输到目标服务器。
+将 `Python-3.12.11.tgz` 传输到目标服务器。
 
 2.解压安装包。
 
 ```bash
-tar -xzf Python-3.10.15.tgz
-cd Python-3.10.15
+tar -xzf Python-3.12.11.tgz
+cd Python-3.12.11
 ```
 
 3.配置安装路径。
 
 ```bash
-# 安装到 /usr/local/python310，避免覆盖系统Python
-./configure --prefix=/usr/local/python310 --enable-optimizations
+# 安装到 /usr/local/python312，避免覆盖系统Python
+./configure --prefix=/usr/local/python312 --enable-optimizations
 ```
 
 4.编译安装。
@@ -164,22 +164,22 @@ sudo make altinstall
 
 ```bash
 # 创建python3软链接
-sudo ln -sf /usr/local/python310/bin/python3 /usr/local/bin/python3
+sudo ln -sf /usr/local/python312/bin/python3 /usr/local/bin/python3
 
 # 创建pip3软链接
-sudo ln -sf /usr/local/python310/bin/pip3 /usr/local/bin/pip3
+sudo ln -sf /usr/local/python312/bin/pip3 /usr/local/bin/pip3
 ```
 
 6.验证安装。
 
 ```bash
-python3 --version   # 应输出 Python 3.10.15
+python3 --version   # 应输出 Python 3.12.11
 pip3 --version
 ```
 
 **注意事项**
 
-- 安装路径 `/usr/local/python310` 不影响系统自带Python。
+- 安装路径 `/usr/local/python312` 不影响系统自带Python。
 - 软链接放在 `/usr/local/bin`，优先级低于 `/usr/bin`。
 - 系统自带的 `python` 或 `python2` 命令保持不变。
 
@@ -255,7 +255,6 @@ su - postgres # 切换至postgres用户
 su - postgres
 
 # 前台启动
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
 /usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/data/logfile start
 
 # 添加系统环境变量
@@ -279,7 +278,7 @@ psql -l
 ```bash
 sudo tee /etc/systemd/system/postgresql.service << EOF
 [Unit]
-Description=PostgreSQL 16 Database Server
+Description=PostgreSQL 15 Database Server
 After=network.target
 
 [Service]
@@ -396,29 +395,19 @@ npm --version
 
 ---
 
-## 2.3 注册中心服务离线安装步骤
+## 2.3 注册中心服务安装步骤
 ![[photo]](figures/install-registry-center-flow.png)
-1.准备安装包。
-
-下载注册中心源码：[registry-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/4506a90cd7fc)
-
-下载离线服务依赖包：[wheels.zip](https://pan.quark.cn/s/957150b18c0a)
-
-在目标服务器的临时目录下创建`/registry-center`文件夹，将 registry-center 源码和离线服务依赖包传输到该目录下：
+1.获取源码。
 
 ```bash
-mkdir /tmp/registry-center
-cd /tmp/registry-center
-unzip registry-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./registry-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/registry-center.git
+cd registry-center
 ```
 
 2.创建虚拟环境。
 
 ```bash
-cd registry-center-main-a2a1.0-20260430-release
-
-# 使用已安装的Python 3.10创建虚拟环境
+# 使用已安装的Python 3.12创建虚拟环境
 python3 -m venv venv --copies
 ```
 
@@ -431,16 +420,16 @@ source venv/bin/activate
 
 激活后，命令行前缀会显示 `(venv)`。
 
-4.离线安装依赖。
+4.安装依赖。
 
 ```bash
-# 从wheels文件夹离线安装所有依赖
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# 激活虚拟环境后安装依赖
+pip install -r ./requirements.txt
 ```
 
 5.服务安装配置（可选）。
 
-可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等，离线安装模式下可不修改此配置文件
+可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等。
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -457,8 +446,8 @@ PYTHON_PATH=
 # 服务名称
 SERVICE_NAME=registry-center
 
-# 是否自动安装依赖，离线状态下需自行准备依赖包，设置为false；为true时将使用pip命令下载安装依赖包
-INSTALL_DEPS=false
+# 是否自动安装依赖（推荐设置为true，使用pip安装）
+INSTALL_DEPS=true
 ```
 
 > 退出vi：按下Esc按键，输入:wq!
@@ -484,7 +473,7 @@ chmod +x ./bin/*.sh
 8.安装服务到指定目录。
 
 ```bash
-# 安装服务到步骤3.5中指定的INSTALL_DIR目录
+# 安装服务到步骤2.3.5中指定的INSTALL_DIR目录
 sudo ./bin/install_service.sh install
 
 # 执行成功后将回显成功信息：
@@ -496,7 +485,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/registry-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 
@@ -546,7 +535,7 @@ systemctl stop registry-center
 journalctl -u registry-center
 
 # 实时追踪日志
-journalctl -u registry-center
+journalctl -u registry-center -f
 ```
 
 12.卸载服务。
@@ -558,30 +547,20 @@ sudo ./bin/install_service.sh uninstall
 
 ---
 
-## 2.4 编排中心服务离线安装步骤
+## 2.4 编排中心服务安装步骤
 ![[photo]](figures/install-orchestration-center-flow.png)
 
-1.准备安装包。
-
-下载注册中心源码：[orchestration-center-main-a2a1.0-20260430-release.zip](https://pan.quark.cn/s/346356c6a6aa)
-
-下载离线服务依赖包：[wheels.zip](https://pan.quark.cn/s/7488f63ec3f6)
-
-在目标服务器的临时目录下创建`/orchestration-center`文件夹，将 orchestration-center 源码和离线服务依赖包传输到该目录下：
+1.获取源码。
 
 ```bash
-mkdir /tmp/orchestration-center
-cd /tmp/orchestration-center
-unzip orchestration-center-main-a2a1.0-20260430-release.zip
-unzip wheels.zip -d ./orchestration-center-main-a2a1.0-20260430-release
+git clone https://github.com/project-openan/orchestration-center.git
+cd orchestration-center
 ```
 
 2.创建虚拟环境。
 
 ```bash
-cd orchestration-center-main-a2a1.0-20260430-release
-
-# 使用已安装的Python 3.10创建虚拟环境
+# 使用已安装的Python 3.12创建虚拟环境
 python3 -m venv venv --copies
 ```
 
@@ -594,16 +573,16 @@ source venv/bin/activate
 
 激活后，命令行前缀会显示 `(venv)`。
 
-4.离线安装依赖。
+4.安装依赖。
 
 ```bash
-# 从wheels文件夹离线安装所有依赖
-pip install --no-index --find-links=wheels/ -r ./requirements.txt
+# 激活虚拟环境后安装依赖
+pip install -r ./requirements.txt
 ```
 
 5.服务安装配置（可选）。
 
-可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等，离线安装模式下可不修改此配置文件
+可在`./etc/systemd/deploy.conf`文件中配置服务部署目录等。
 
 ```bash
 vi ./etc/systemd/deploy.conf
@@ -620,19 +599,19 @@ PYTHON_PATH=
 # 服务名称
 SERVICE_NAME=orchestration-center
 
-# 是否自动安装依赖，离线状态下需自行准备依赖包，设置为false；为true时将使用pip命令下载安装依赖包
-INSTALL_DEPS=false
+# 是否自动安装依赖（推荐设置为true，使用pip安装）
+INSTALL_DEPS=true
 ```
 
 > 退出vi：按下Esc按键，输入:wq!
 
 6.修改数据库连接配置。
 
-修改编排中心配置文件： `./etc/conf/db_config.conf`
+修改编排中心配置文件： `./etc/conf/db_config.json`
 
-- 修改`host`为postgressql数据库所在节点IP
+- 修改`host`为PostgreSQL数据库所在节点IP
 
-- 修改`port`为postgressql数据库端口号，默认为`5432`
+- 修改`port`为PostgreSQL数据库端口号，默认为`5432`
 
 - 用户名`user`密码、`password`按照数据库实际设置的情况进行修改
 
@@ -646,7 +625,7 @@ chmod +x ./bin/*.sh
 8.安装服务到指定目录。
 
 ```bash
-# 安装服务到步骤4.5中指定的INSTALL_DIR目录
+# 安装服务到步骤2.4.5中指定的INSTALL_DIR目录
 sudo ./bin/install_service.sh install
 
 # 执行成功后将回显成功信息：
@@ -658,7 +637,7 @@ sudo ./bin/install_service.sh install
 #   Install Deps: false
 # 
 # Using Python: /OpenA2A-T/orchestration-center/venv/bin/python3
-# Python 3.10.15
+# Python 3.12.11
 # Service installed successfully!
 ```
 
@@ -699,7 +678,7 @@ systemctl stop orchestration-center
 journalctl -u orchestration-center
 
 # 实时追踪日志
-journalctl -u orchestration-center
+journalctl -u orchestration-center -f
 ```
 
 12.卸载服务。
@@ -713,7 +692,7 @@ sudo ./bin/install_service.sh uninstall
 
 ## 2.5 编排中心前端离线安装步骤
 
-前端代码已集成在编排中心代码仓中，完成[2.4章节](#24-编排中心服务离线安装步骤)后前端代码即已安装完成，只需启动前端服务即可。启动步骤如下：
+前端代码已集成在编排中心代码仓中，完成[2.4章节](#24-编排中心服务安装步骤)后前端代码即已安装完成，只需启动前端服务即可。启动步骤如下：
 
 进入编排中心安装目录下的 `workflow-designer` 目录：
 
@@ -739,7 +718,7 @@ Python SDK 源码位于 `a2a-t-sdk` 仓库，端到端演示样例位于 `a2a-t-
 
 - A2A-T Java SDK
 
-[安装和配置方式见 Java SDK 的用户指南](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+[安装和配置方式见 Java SDK 的用户指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
 
 Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 17+、Maven，并配置可用的 LLM 服务地址和 API Key。
 
@@ -828,7 +807,7 @@ Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 1
 为了快速体验完整流程，可以启动项目自带的示例 Agent 服务。
 ```bash
 cd {项目路径}/orchestration-center/samples
-python start_agents_server.py
+python3 start_agents_server.py
 ```
 该脚本会：
 - 向注册中心注册多个示例 Agent。
@@ -897,14 +876,14 @@ cd {项目路径}/a2a-t-samples/samples/helloworld
 cp env.example .env
 # 编辑 .env，填写 A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 另开终端启动客户端：
 
 ```bash
 cd {项目路径}/a2a-t-samples/samples/helloworld
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 3. 运行 Subscribe Incident 示例。
@@ -914,14 +893,14 @@ cd {项目路径}/a2a-t-samples/samples/subscribe_incident
 cp env.example .env
 # 编辑 .env，填写 A2AT_LLM_API_KEY
 
-../../.venv/Scripts/python.exe server_main.py
+../../.venv/bin/python server_main.py
 ```
 
 另开终端启动客户端：
 
 ```bash
 cd {项目路径}/a2a-t-samples/samples/subscribe_incident
-../../.venv/Scripts/python.exe client_main.py
+../../.venv/bin/python client_main.py
 ```
 
 #### 3.2.1.2 核心流程验证
@@ -995,5 +974,5 @@ java @a2a-t-sample/target/client.javaargs.txt
 
 详细说明见：
 
-- [Java SDK 用户指南](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
-- [Java SDK 开发指南](https://gitcode.com/OpenAN/a2a-t-java/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
+- [Java SDK 用户指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+- [Java SDK 开发指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)

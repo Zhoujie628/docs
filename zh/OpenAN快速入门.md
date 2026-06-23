@@ -708,19 +708,19 @@ npm run dev
 
 ## 2.6 A2A-T SDK 离线安装步骤
 
-A2A-T SDK分为A2A-T Python SDK和A2A-T Java SDK两种，是 A2A-T 协议的 Python/Java 实现，A2A-T Python SDK面向客户端 Agent 和服务端 Agent 提供任务提示词生成、提示词校验和多轮协商能力。A2A-T Java SDK面向 Java Agent 提供客户端提示词生成、服务端提示词校验、协商运行时和 A2A Java 集成样例。
+A2A-T SDK分为a2a-t-sdk-python和a2a-t-sdk-java两种，是 A2A-T 协议的 Python/Java 实现，a2a-t-sdk-python面向客户端 Agent 和服务端 Agent 提供任务提示词生成、提示词校验和多轮协商能力。a2a-t-sdk-java面向 Java Agent 提供客户端提示词生成、服务端提示词校验、协商运行时和 A2A Java 集成样例。
 
-- A2A-T Python SDK
+- a2a-t-sdk-python
 
-[安装和配置方式见 Python SDK 的用户指南](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+[安装和配置方式见 Python SDK 的用户指南](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
 
-Python SDK 源码位于 `a2a-t-sdk` 仓库，端到端演示样例位于 `a2a-t-samples` 仓库。SDK 自身要求 Python 3.12+，当前样例仓按照其 README 要求使用 Python 3.14。
+Python SDK 源码位于 `a2a-t-sdk-python` 仓库，端到端演示样例位于 `a2a-t-samples` 仓库。SDK 运行前需准备 Python 3.12+，并配置可用的 LLM 服务地址和 API Key。
 
-- A2A-T Java SDK
+- a2a-t-sdk-java
 
 [安装和配置方式见 Java SDK 的用户指南](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
 
-Java SDK 源码和示例均位于 `a2a-t-java` 仓库。运行前需准备 JDK 17+、Maven，并配置可用的 LLM 服务地址和 API Key。
+Java SDK 源码和示例均位于 `a2a-t-sdk-java` 仓库。运行前需准备 JDK 17+、Maven，并配置可用的 LLM 服务地址和 API Key。
 
 ---
 
@@ -846,131 +846,33 @@ python3 start_agents_server.py
 
 ## 3.2 A2A-T SDK
 
-### 3.2.1 A2A-T Python SDK
+### 3.2.1 a2a-t-sdk-python
 
-A2A-T Python SDK 是 A2A-T 协议的 Python 实现，面向客户端 Agent 和服务端 Agent 提供任务提示词生成、提示词校验和多轮协商能力。主要功能包括：
+a2a-t-sdk-python 是 A2A-T 协议的 Python 实现，面向客户端 Agent 和服务端 Agent 提供任务提示词生成、提示词校验和多轮协商能力。主要功能包括：
 
 - **任务提示词生成**：客户端根据用户自然语言或结构化输入生成 A2A-T processed task prompt。
 - **任务提示词校验**：服务端校验 processed task prompt 的场景、模板、槽位和语义一致性。
 - **多轮协商**：支持 information、clarification、feasibility、fulfillment 四类协商流程。
 - **提示词资源管理**：支持本地场景、槽位、模板和系统提示词资源加载。
-- **LLM 适配**：通过 OpenAI-compatible 方式接入外部大模型。
+- **LLM 适配**：通过 OpenAIClient 方式接入外部大模型。
 
 通过这些能力，Python SDK 可以帮助开发者快速构建符合 A2A-T 交互规范的 Python Agent，并与 A2A 协议链路、注册中心和编排中心配合集成。
 
-#### 3.2.1.1 启动示例 Agent
+详细说明见：
 
-为了快速体验 Python SDK，可运行 `a2a-t-samples` 中的示例。
+- [Python SDK 用户指南](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
+- [Python SDK 开发指南](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
 
-1. 安装样例依赖。
+### 3.2.2 a2a-t-sdk-java
 
-```bash
-cd {项目路径}/a2a-t-samples
-uv python pin 3.14
-uv sync
-```
-
-2. 运行 Hello World 示例。
-```bash
-cd {项目路径}/a2a-t-samples/samples/helloworld
-cp env.example .env
-# 编辑 .env，填写 A2AT_LLM_API_KEY
-
-../../.venv/bin/python server_main.py
-```
-
-另开终端启动客户端：
-
-```bash
-cd {项目路径}/a2a-t-samples/samples/helloworld
-../../.venv/bin/python client_main.py
-```
-
-3. 运行 Subscribe Incident 示例。
-
-```bash
-cd {项目路径}/a2a-t-samples/samples/subscribe_incident
-cp env.example .env
-# 编辑 .env，填写 A2AT_LLM_API_KEY
-
-../../.venv/bin/python server_main.py
-```
-
-另开终端启动客户端：
-
-```bash
-cd {项目路径}/a2a-t-samples/samples/subscribe_incident
-../../.venv/bin/python client_main.py
-```
-
-#### 3.2.1.2 核心流程验证
-
-完成上述步骤后，您可以按照以下流程体验 Python SDK 的核心能力：
-
-1. 客户端基于 SDK 内置提示词资源生成 processed task prompt。
-2. 客户端通过 A2A 请求将 prompt 发送给服务端。
-3. 服务端调用 SDK 校验 prompt。
-4. 如任务信息不足，服务端发起协商。
-5. 客户端补充信息并继续协商。
-6. 服务端校验通过后执行业务逻辑并返回结果。
-
-Hello World 示例用于验证最小链路，Subscribe Incident 示例用于验证 incident 订阅场景下的多轮协商。详细说明见：
-
-- [Python SDK 用户指南](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/zh/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md)
-- [Python SDK 开发指南](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/zh/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md)
-
-### 3.2.2 A2A-T Java SDK
-
-A2A-T Java SDK 是 A2A-T 协议的 Java 实现，面向 Java Agent 提供客户端提示词生成、服务端提示词校验、协商运行时和 A2A Java 集成样例。主要功能包括：
+a2a-t-sdk-java 是 A2A-T 协议的 Java 实现，面向 Java Agent 提供客户端提示词生成、服务端提示词校验、协商运行时和 A2A Java 集成样例。主要功能包括：
 
 - **客户端提示词生成**：通过 `A2ATClient` 生成 A2A-T processed task prompt。
 - **服务端提示词校验**：通过 `A2ATServer` 校验 prompt 的场景、槽位和语义一致性。
 - **协商流程**：支持多轮信息补充、澄清、可行性确认和履约确认。
 - **Maven 多模块工程**：按 core、resources、llm、prompt、negotiation、client、server、sample 分层组织。
-- **A2A HTTP 示例**：`a2a-t-sample` 基于 A2A Java HTTP+JSON/REST 链路演示端到端调用。
 
 通过这些能力，Java SDK 可以帮助开发者在 Java Agent 中复用 A2A-T 的任务表达、校验和协商能力，并通过注册中心发现目标 Agent。
-
-#### 3.2.2.1 启动示例 Agent
-
-Java 示例模块为 `a2a-t-java/a2a-t-sample`。运行示例前，请先启动注册中心服务，并确认 `client.env`、`server.env` 中的注册中心地址配置正确。
-
-1. 编译示例。
-
-```bash
-cd {项目路径}/a2a-t-java
-mvn "-Dmaven.repo.local=.mvn/repository" -pl a2a-t-sample -am -DskipTests package
-```
-
-2. 启动服务端。
-
-```bash
-java @a2a-t-sample/target/server.javaargs.txt
-```
-
-服务端会启动 A2A HTTP 服务，并向注册中心注册示例 AgentCard。
-
-3. 启动客户端。
-
-另开终端执行：
-
-```bash
-cd {项目路径}/a2a-t-java
-java @a2a-t-sample/target/client.javaargs.txt
-```
-
-客户端会从注册中心查询目标 AgentCard，生成 A2A-T prompt，并向服务端发起 A2A HTTP+JSON/REST 请求。
-
-#### 3.2.2.2 核心流程验证
-
-完成上述步骤后，您可以按照以下流程体验 Java SDK 的核心能力：
-
-1. 服务端启动并注册 AgentCard。
-2. 客户端从注册中心查询目标 AgentCard。
-3. 客户端调用 `A2ATClient` 生成 processed task prompt。
-4. 客户端构造 A2A HTTP+JSON/REST 请求。
-5. 服务端接收请求并调用 `A2ATServer` 校验 prompt。
-6. 服务端校验通过后返回任务状态、消息或 artifact 事件。
 
 详细说明见：
 

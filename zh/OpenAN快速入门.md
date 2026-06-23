@@ -517,7 +517,7 @@ cd /OpenA2A-T/registry-center
 ./venv/bin/python3 -m agent_registry.init
 ```
 
-服务默认支持HTTPS和AgentCard签名及验签能力，**首次启动可选择关闭，后续按需执行此章节进行配置**。
+服务支持HTTPS和AgentCard签名及验签能力，**首次启动可选择关闭，后续按需执行此章节进行配置**。
 
 ```bash
 是否开启HTTPS enable_https (y/n, 默认: true): n
@@ -669,7 +669,7 @@ cd /OpenA2A-T/orchestration-center
 vi ./etc/conf/server.conf
 ```
 
-服务默认支持HTTPS能力，**首次启动可选择关闭，后续按需执行此章节进行配置**
+HTTPS 能力开发中，默认关闭。如需启用，请将 `enable_https` 改为 `true`，并确保已配置 SSL 证书后重启服务。
 
 ```bash
 # 设置enable_https=false

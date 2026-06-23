@@ -667,7 +667,7 @@ cd /OpenA2A-T/orchestration-center
 vi ./etc/conf/server.conf
 ```
 
-The service supports HTTPS capability by default. **For first-time startup, you can choose to disable it, and configure it later as needed by following this section**
+HTTPS capability is under development and disabled by default. To enable it, set `enable_https` to `true`, ensure SSL certificates are configured, then restart the service.
 
 ```bash
 # Set enable_https=false

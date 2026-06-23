@@ -724,15 +724,15 @@ After successful startup, you can access the orchestration-center frontend inter
 
 ## 2.6 A2A-T SDK Offline Installation Steps
 
-A2A-T SDK includes A2A-T Python SDK and A2A-T Java SDK, which are the Python/Java implementations of the A2A-T protocol. A2A-T Python SDK provides task prompt generation, prompt validation, and multi-round negotiation capabilities for client Agents and server Agents. A2A-T Java SDK provides client prompt generation, server prompt validation, negotiation runtime, and A2A Java integration examples for Java Agents.
+A2A-T SDK includes A2A-T Python SDK and a2a-t-sdk-java, which are the Python/Java implementations of the A2A-T protocol. A2A-T Python SDK provides task prompt generation, prompt validation, and multi-round negotiation capabilities for client Agents and server Agents. a2a-t-sdk-java provides client prompt generation, server prompt validation, negotiation runtime, and A2A Java integration examples for Java Agents.
 
 - A2A-T Python SDK
 
-[Installation and configuration instructions are in the Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md)
+[Installation and configuration instructions are in the Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/en/user_guide.md)
 
-The Python SDK source code is in the `a2a-t-sdk` repository, and the end-to-end demonstration samples are in the `a2a-t-samples` repository. The SDK itself requires Python 3.12+, and the current samples repository uses Python 3.14 per its README requirements.
+The Python SDK source code is in the `a2a-t-sdk` repository, and the end-to-end demonstration samples are in the `a2a-t-samples` repository. Before running, you need to prepare Python 3.12+, and configure an available LLM service address and API Key.
 
-- A2A-T Java SDK
+- a2a-t-sdk-java
 
 [Installation and configuration instructions are in the Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md)
 
@@ -870,123 +870,25 @@ A2A-T Python SDK is the Python implementation of the A2A-T protocol, providing t
 - **Task Prompt Validation**: The server validates the scenario, template, slot, and semantic consistency of the processed task prompt.
 - **Multi-round Negotiation**: Supports four types of negotiation flows: information, clarification, feasibility, and fulfillment.
 - **Prompt Resource Management**: Supports loading local scenario, slot, template, and system prompt resources.
-- **LLM Adaptation**: Connects to external large models via OpenAI-compatible approach.
+- **LLM Adaptation**: Connects to external large models via OpenAIClient approach.
 
 Through these capabilities, the Python SDK can help developers quickly build Python Agents that comply with A2A-T interaction specifications, and integrate with A2A protocol links, registry-center, and orchestration-center.
 
-#### 3.2.1.1 Start Example Agent
+For detailed instructions, see:
 
-To quickly experience the Python SDK, you can run the examples in `a2a-t-samples`.
+- [Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/en/user_guide.md)
+- [Python SDK Developer Guide](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/en/developer_guide.md)
 
-1.Install sample dependencies.
+### 3.2.2 a2a-t-sdk-java
 
-```bash
-cd {project path}/a2a-t-samples
-uv python pin 3.14
-uv sync
-```
-
-2.Run the Hello World example.
-```bash
-cd {project path}/a2a-t-samples/samples/helloworld
-cp env.example .env
-# Edit .env, fill in A2AT_LLM_API_KEY
-
-../../.venv/bin/python server_main.py
-```
-
-Open another terminal to start the client:
-
-```bash
-cd {project path}/a2a-t-samples/samples/helloworld
-../../.venv/bin/python client_main.py
-```
-
-3.Run the Subscribe Incident example.
-
-```bash
-cd {project path}/a2a-t-samples/samples/subscribe_incident
-cp env.example .env
-# Edit .env, fill in A2AT_LLM_API_KEY
-
-../../.venv/bin/python server_main.py
-```
-
-Open another terminal to start the client:
-
-```bash
-cd {project path}/a2a-t-samples/samples/subscribe_incident
-../../.venv/bin/python client_main.py
-```
-
-#### 3.2.1.2 Core Flow Verification
-
-After completing the above steps, you can experience the Python SDK's core capabilities by following this flow:
-
-1.The client generates a processed task prompt based on the SDK's built-in prompt resources.
-2.The client sends the prompt to the server via an A2A request.
-3.The server calls the SDK to validate the prompt.
-4.If task information is insufficient, the server initiates negotiation.
-5.The client supplements information and continues negotiation.
-6.After the server validates successfully, it executes business logic and returns the result.
-
-The Hello World example is used to verify the minimum link, and the Subscribe Incident example is used to verify multi-round negotiation in the incident subscription scenario. For detailed instructions, see:
-
-- [Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md)
-- [Python SDK Developer Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/developer_guide.md)
-
-### 3.2.2 A2A-T Java SDK
-
-A2A-T Java SDK is the Java implementation of the A2A-T protocol, providing client prompt generation, server prompt validation, negotiation runtime, and A2A Java integration examples for Java Agents. Key features include:
+a2a-t-sdk-java is the Java implementation of the A2A-T protocol, providing client prompt generation, server prompt validation, negotiation runtime, and A2A Java integration examples for Java Agents. Key features include:
 
 - **Client Prompt Generation**: Generate A2A-T processed task prompt via `A2ATClient`.
 - **Server Prompt Validation**: Validate the scenario, slot, and semantic consistency of the prompt via `A2ATServer`.
 - **Negotiation Flow**: Supports multi-round information supplementation, clarification, feasibility confirmation, and fulfillment confirmation.
 - **Maven Multi-module Project**: Organized by core, resources, llm, prompt, negotiation, client, server, and sample layers.
-- **A2A HTTP Example**: `a2a-t-sample` demonstrates end-to-end invocation based on A2A Java HTTP+JSON/REST links.
 
 Through these capabilities, the Java SDK can help developers reuse A2A-T's task expression, validation, and negotiation capabilities in Java Agents, and discover target Agents through the registry-center.
-
-#### 3.2.2.1 Start Example Agent
-
-The Java example module is `a2a-t-java/a2a-t-sample`. Before running the example, please start the registry-center service first and confirm that the registry-center address in `client.env` and `server.env` is configured correctly.
-
-1.Compile the example.
-
-```bash
-cd {project path}/a2a-t-java
-mvn "-Dmaven.repo.local=.mvn/repository" -pl a2a-t-sample -am -DskipTests package
-```
-
-2.Start the server.
-
-```bash
-java @a2a-t-sample/target/server.javaargs.txt
-```
-
-The server will start the A2A HTTP service and register an example AgentCard with the registry-center.
-
-3.Start the client.
-
-Open another terminal and execute:
-
-```bash
-cd {project path}/a2a-t-java
-java @a2a-t-sample/target/client.javaargs.txt
-```
-
-The client will query the target AgentCard from the registry-center, generate an A2A-T prompt, and send an A2A HTTP+JSON/REST request to the server.
-
-#### 3.2.2.2 Core Flow Verification
-
-After completing the above steps, you can experience the Java SDK's core capabilities by following this flow:
-
-1.The server starts and registers the AgentCard.
-2.The client queries the target AgentCard from the registry-center.
-3.The client calls `A2ATClient` to generate a processed task prompt.
-4.The client constructs an A2A HTTP+JSON/REST request.
-5.The server receives the request and calls `A2ATServer` to validate the prompt.
-6.After the server validates successfully, it returns the task status, message, or artifact event.
 
 For detailed instructions, see:
 

@@ -18,15 +18,15 @@ OpenAN version numbering uses year and month as the version number, allowing use
 
 # Version Introduction
 
-This version is the first release of OpenAN, with modules including registry-center, orchestration-center, A2A-T SDK (A2A-T Python SDK, A2A-T Java SDK).
+This version is the first release of OpenAN, with modules including registry-center, orchestration-center, A2A-T SDK (a2a-t-sdk-python, a2a-t-sdk-java).
 
 - The main features of registry-center are shown in [Table 1](#table_registry_features). For detailed information on feature descriptions, please refer to [Registry-center User Guide](https://github.com/project-openan/registry-center/blob/main/docs/en/Registry%20Center%20User%20Guide.md).
   
 - The main features of orchestration-center are shown in [Table 2](#table_orchestrate_features). For detailed information on feature descriptions, please refer to [Orchestration-center User Guide](https://github.com/project-openan/orchestration-center/blob/main/docs/en/Orchestration%20Center%20User%20Guide.md).
   
-- The main features of A2A-T Python SDK are shown in [Table 3](#table_a2at_sdk_features). For detailed information on feature descriptions, please refer to [A2A-T Python SDK User Guide](https://github.com/project-openan/a2a-t-sdk/blob/main/docs/en/user_guide.md).
+- The main features of a2a-t-sdk-python are shown in [Table 3](#table_a2at_sdk_features). For detailed information on feature descriptions, please refer to [a2a-t-sdk-python User Guide](https://github.com/project-openan/a2a-t-sdk-python/blob/main/docs/en/user_guide.md).
   
-- The main features of A2A-T Java SDK are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [A2A-T Java SDK User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md).
+- The main features of a2a-t-sdk-java are shown in [Table 4](#table_a2at_java_features). For detailed information on feature descriptions, please refer to [a2a-t-sdk-java User Guide](https://github.com/project-openan/a2a-t-sdk-java/blob/main/docs/en/user_guide.md).
 
 **Table 1** Registry-center Feature List<a id="table_registry_features" href="#"></a>
 <table border="0">
@@ -223,7 +223,7 @@ This version is the first release of OpenAN, with modules including registry-cen
   </tbody>
 </table>
 
-**Table 3** A2A-T Python SDK Feature List<a id="table_a2at_sdk_features" href="#"></a>
+**Table 3** a2a-t-sdk-python Feature List<a id="table_a2at_sdk_features" href="#"></a>
 <table border="0">
   <thead>
     <tr>
@@ -251,11 +251,7 @@ This version is the first release of OpenAN, with modules including registry-cen
       <td>Task prompts adopt YAML front-matter format, including metadata such as scenario_code, language, description, etc., facilitating server-side parsing and validation.</td>
     </tr>
     <tr>
-      <td rowspan="5">Task Prompt Compliance Validation</td>
-      <td>Guardrail Check</td>
-      <td>After receiving a task prompt, the server first performs security guardrail checks, identifying and intercepting prompts containing malicious intents to ensure interaction security. Currently provides noop (pass-through) implementation, with AWS Bedrock and Azure Content Safety extension interfaces reserved.</td>
-    </tr>
-    <tr>
+      <td rowspan="4">Task Prompt Compliance Validation</td>
       <td>Scenario Parsing</td>
       <td>Automatically parses the front-matter metadata of the task prompt, identifies scenario_code, and loads the corresponding slot Schema and scenario template.</td>
     </tr>
@@ -269,24 +265,12 @@ This version is the first release of OpenAN, with modules including registry-cen
     </tr>
     <tr>
       <td>Compliance Pipeline</td>
-      <td>The server provides a complete compliance validation pipeline (guardrail → scenario parsing → slot extraction → Schema validation → semantic validation), with each stage configurable for on-demand enabling/disabling.</td>
+      <td>The server provides a complete compliance validation pipeline (scenario parsing → slot extraction → Schema validation → semantic validation), with each stage configurable for on-demand enabling/disabling.</td>
     </tr>
     <tr>
-      <td rowspan="4">Multi-round Negotiation</td>
+      <td rowspan="1">Multi-round Negotiation</td>
       <td>Information Negotiation</td>
       <td>Supports information supplement negotiation between Agents. When task prompt information is incomplete, the server can initiate an information negotiation request to obtain missing information.</td>
-    </tr>
-    <tr>
-      <td>Clarification Negotiation</td>
-      <td>Supports requirement clarification negotiation between Agents. When task intent is ambiguous or unclear, specific requirements are clarified through multi-round interactions.</td>
-    </tr>
-    <tr>
-      <td>Feasibility Negotiation</td>
-      <td>Supports feasibility confirmation negotiation between Agents, evaluating feasibility before task execution to avoid ineffective execution of infeasible tasks.</td>
-    </tr>
-    <tr>
-      <td>Fulfillment Negotiation</td>
-      <td>Supports task execution detail negotiation between Agents, negotiating task execution plans, timing, resources, and other details. After reaching agreement, enters the execution phase.</td>
     </tr>
     <tr>
       <td rowspan="3">Negotiation State Management</td>
@@ -302,15 +286,7 @@ This version is the first release of OpenAN, with modules including registry-cen
       <td>Provides NegotiationStateStore protocol interface. Currently has built-in in-memory storage implementation, supporting negotiation state access by session ID.</td>
     </tr>
     <tr>
-      <td rowspan="4">LLM Runtime</td>
-      <td>Multi-mode Invocation</td>
-      <td>Supports three LLM invocation modes: single completion (complete), conversation with session history (chat), and structured output (structured), meeting different scenario requirements.</td>
-    </tr>
-    <tr>
-      <td>Adapter Factory</td>
-      <td>Provides LLMAdapterFactory factory class, supporting direct adapter registration and composite registration (transport + payload_builder + response_parser). Currently pre-registers deepseek (OpenAI-compatible protocol) adapter.</td>
-    </tr>
-    <tr>
+      <td rowspan="2">LLM Runtime</td>
       <td>Session Management</td>
       <td>Built-in session history management, supporting configuration of history window size (A2AT_LLM_HISTORY_WINDOW), maximum total sessions, and per-Provider session limit to prevent memory overflow.</td>
     </tr>
@@ -343,7 +319,7 @@ This version is the first release of OpenAN, with modules including registry-cen
   </tbody>
 </table>
 
-**Table 4** A2A-T Java SDK Feature List<a id="table_a2at_java_features" href="#"></a>
+**Table 4** a2a-t-sdk-java Feature List<a id="table_a2at_java_features" href="#"></a>
 <table border="0">
   <thead>
     <tr>
@@ -354,7 +330,7 @@ This version is the first release of OpenAN, with modules including registry-cen
   </thead>
   <tbody>
     <tr>
-      <td rowspan="5">Task Prompt Generation</td>
+      <td rowspan="4">Task Prompt Generation</td>
       <td>Scenario Identification</td>
       <td>Performs scenario identification on user input based on LLM, automatically matching predefined telecom operation scenarios (such as alarm subscription, fault diagnosis, energy-saving optimization, dedicated line complaints, etc.), supporting Chinese and English bilingual scenario definitions.</td>
     </tr>
@@ -371,15 +347,7 @@ This version is the first release of OpenAN, with modules including registry-cen
       <td>Task prompts adopt YAML front-matter format, including metadata such as scenario_code, language, description, etc., facilitating server-side parsing and validation.</td>
     </tr>
     <tr>
-      <td>Orchestrator Pattern</td>
-      <td>Client prompt generation is driven by the <code>ClientPromptGenerationOrchestrator</code> orchestrator, providing default implementation <code>DefaultClientPromptGenerationOrchestrator</code>, supporting custom replacement of each stage component through the Builder pattern.</td>
-    </tr>
-    <tr>
-      <td rowspan="6">Task Prompt Compliance Validation</td>
-      <td>Guardrail Check</td>
-      <td>After receiving a task prompt, the server first performs security guardrail checks, identifying and intercepting prompts containing malicious intents to ensure interaction security. Provides <code>ServerPromptGuardrail</code> extension interface and <code>NoopServerPromptGuardrail</code> default pass-through implementation, with AWS Bedrock and Azure Content Safety external policy endpoint configurations reserved.</td>
-    </tr>
-    <tr>
+      <td rowspan="4">Task Prompt Compliance Validation</td>
       <td>Scenario Parsing</td>
       <td>Automatically parses the front-matter metadata of the task prompt, identifies scenario_code, and loads the corresponding slot Schema and scenario template. Supports two strategies: LLM parsing (<code>LlmBackedPromptMetadataExtractor</code>) and template matching parsing (<code>TemplateMatchingPromptMetadataExtractor</code>).</td>
     </tr>
@@ -393,28 +361,12 @@ This version is the first release of OpenAN, with modules including registry-cen
     </tr>
     <tr>
       <td>Compliance Pipeline</td>
-      <td>The server provides a complete compliance validation pipeline (guardrail → scenario parsing → slot extraction → Schema validation → semantic validation), driven by the <code>ServerPromptComplianceOrchestrator</code> orchestrator, with each stage configurable for on-demand enabling/disabling.</td>
+      <td>The server provides a complete compliance validation pipeline (scenario parsing → slot extraction → Schema validation → semantic validation), driven by the <code>ServerPromptComplianceOrchestrator</code> orchestrator, with each stage configurable for on-demand enabling/disabling.</td>
     </tr>
     <tr>
-      <td>Compliance Result Model</td>
-      <td>Provides <code>PromptComplianceResult</code> and <code>PromptComplianceFailure</code> structured result models, clearly recording validation failure stages and error codes, facilitating issue localization.</td>
-    </tr>
-    <tr>
-      <td rowspan="4">Multi-round Negotiation</td>
+      <td rowspan="1">Multi-round Negotiation</td>
       <td>Information Negotiation</td>
       <td>Supports information supplement negotiation between Agents. When task prompt information is incomplete, the server can initiate an information negotiation request to obtain missing information.</td>
-    </tr>
-    <tr>
-      <td>Clarification Negotiation</td>
-      <td>Supports requirement clarification negotiation between Agents. When task intent is ambiguous or unclear, specific requirements are clarified through multi-round interactions.</td>
-    </tr>
-    <tr>
-      <td>Feasibility Negotiation</td>
-      <td>Supports feasibility confirmation negotiation between Agents, evaluating feasibility before task execution to avoid ineffective execution of infeasible tasks.</td>
-    </tr>
-    <tr>
-      <td>Fulfillment Negotiation</td>
-      <td>Supports task execution detail negotiation between Agents, negotiating task execution plans, timing, resources, and other details. After reaching agreement, enters the execution phase.</td>
     </tr>
     <tr>
       <td rowspan="4">Negotiation State Management</td>
@@ -434,21 +386,13 @@ This version is the first release of OpenAN, with modules including registry-cen
       <td>Provides <code>NegotiationHandler</code> core handler, supporting Builder pattern registration of negotiation type handlers (<code>NegotiationTypeHandler</code>) and state storage. Client and server share negotiation orchestration logic through <code>RoleBoundNegotiationOrchestrator</code>.</td>
     </tr>
     <tr>
-      <td rowspan="4">LLM Runtime</td>
-      <td>Adapter Architecture</td>
-      <td>Provides <code>LLMAdapter</code> interface and <code>OpenAICompatibleAdapter</code> implementation, based on OpenAI Java SDK (v4.36.0) compatible with all OpenAI protocol model services, switching different LLM backends through configuration.</td>
-    </tr>
-    <tr>
-      <td>Structured Generation</td>
-      <td>Supports structured output constrained by JSON Schema (<code>StructuredGenerationRequest</code>), used for LLM invocation scenarios requiring structured responses such as scenario identification and slot extraction.</td>
-    </tr>
-    <tr>
+      <td rowspan="2">LLM Runtime</td>
       <td>Session Management</td>
-      <td>Built-in <code>LlmSessionStore</code> and <code>InMemoryLlmSessionStore</code>, supporting configuration of history window size, maximum total sessions, and per-Provider session limit to prevent memory overflow. Provides token usage tracking (<code>LlmUsage</code>).</td>
+      <td>Built-in session history management, supporting configuration of history window size (A2AT_LLM_HISTORY_WINDOW), maximum total sessions, and per-Provider session limit to prevent memory overflow.</td>
     </tr>
     <tr>
-      <td>Local Rule Engine</td>
-      <td>In addition to the OpenAI-compatible adapter, provides <code>local_rule</code> provider type, supporting rule-based local scenario identification and slot extraction, suitable for deterministic scenarios without LLM requirements.</td>
+      <td>Extensible</td>
+      <td>LLM adapters support dynamic registration. All model services compatible with OpenAI protocol can be connected through configuration without modifying SDK source code.</td>
     </tr>
     <tr>
       <td rowspan="3">Prompt Resource Management</td>
@@ -461,7 +405,7 @@ This version is the first release of OpenAN, with modules including registry-cen
     </tr>
     <tr>
       <td>Standardized Organization</td>
-      <td>Prompt resources are organized using a standardized directory structure: scenarios/{lang}/scenarios.json (scenario definitions), slots/{scenario}/{lang}/slot.json (slot Schemas), templates/{scenario}/{lang}/template.md (templates), prompts/{action}/{lang}/ (system/user prompts).</td>
+      <td>Prompt resources are organized using a standardized directory structure: scenarios/{lang}/scenarios.json (scenario definitions), slots/{scenario}/{lang}/slot.json (slot Schemas), templates/{scenario}/{lang}/template.md (templates).</td>
     </tr>
     <tr>
       <td rowspan="3">Configuration Management</td>
@@ -649,31 +593,31 @@ The initial release of orchestration-center only provides source code, without b
 
 **Table 4** Orchestration-center v1.0.0 Core Python Dependencies
 
-| Dependency | Version | Purpose |
-|-----|------|------|
-| a2a-t-sdk | >= 0.1.8 | Agent negotiation capability (fulfillment negotiation) |
-| a2a-sdk | latest | A2A protocol implementation (http-server + grpc) |
-| fastapi | >= 0.135.1 | REST API framework |
-| uvicorn | >= 0.42 | ASGI server |
-| pydantic | >= 2.12.5 | Data model validation |
-| openai | >= 2.26.0 | LLM invocation |
-| loguru | >= 0.7.3 | Logging |
-| PyYAML | >= 6.0.3 | YAML parsing |
-| pymupdf | latest | PDF document parsing |
-| sse_starlette | >= 3.3.4 | SSE event stream support |
+| Dependency | Version    | Purpose |
+|-----------|------------|------|
+| a2a-t-sdk | >= 1.0.0   | Agent negotiation capability (fulfillment negotiation) |
+| a2a-sdk   | latest     | A2A protocol implementation (http-server + grpc) |
+| fastapi   | >= 0.135.1 | REST API framework |
+| uvicorn   | >= 0.42    | ASGI server |
+| pydantic  | >= 2.12.5  | Data model validation |
+| openai    | >= 2.26.0  | LLM invocation |
+| loguru    | >= 0.7.3   | Logging |
+| PyYAML    | >= 6.0.3   | YAML parsing |
+| pymupdf   | latest     | PDF document parsing |
+| sse_starlette | >= 3.3.4   | SSE event stream support |
 
 > **Note:**
 >
 > - See requirements.txt for the complete dependency list.
 > - The negotiation configuration of a2a-t-sdk is automatically generated from `common/config/llm_config.json` to `samples/a2at_config/.env`.
 
-## A2A-T Python SDK
+## a2a-t-sdk-python
 
 ### Deliverables
 
-The initial release of A2A-T Python SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Python SDK repository](https://github.com/project-openan/a2a-t-sdk).
+The initial release of a2a-t-sdk-python only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community a2a-t-sdk-python repository](https://github.com/project-openan/a2a-t-sdk-python).
 
-**Table 1** A2A-T Python SDK v0.1.8 Deliverable List
+**Table 1** a2a-t-sdk-python v1.0.0 Deliverable List
 
 <table border="0">
   <thead>
@@ -686,7 +630,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
   <tbody>
     <tr>
       <td>Source Code</td>
-      <td>A2A-T Python SDK source code</td>
+      <td>a2a-t-sdk-python source code</td>
       <td>Complete source code of A2A-T SDK, including client task prompt generation, server compliance validation, multi-round negotiation, LLM runtime, and prompt resource management modules</td>
     </tr>
   </tbody>
@@ -697,11 +641,10 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 >
 > - The initial release only delivers source code; deliverables do not include build engineering or binary installation packages.
 > - Users need to complete build and installation themselves via `uv sync --dev` or `pip install -e .`.
-> - This version is in the Alpha stage (v0.1.8); interfaces and resource organization may be adjusted with subsequent version evolution.
 
 ### Operating System Version Compatibility
 
-**Table 2** A2A-T Python SDK v0.1.8 Supported Scenarios
+**Table 2** a2a-t-sdk-python v1.0.0 Supported Scenarios
 
 | Operating System | Version | Architecture | Applicability |
 |---------|------|------|----------|
@@ -712,18 +655,18 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 > **Note:**
 >
-> - A2A-T Python SDK is a pure Python package with no platform-native dependencies, theoretically supporting all platforms where Python 3.12+ can run.
+> - a2a-t-sdk-python is a pure Python package with no platform-native dependencies, theoretically supporting all platforms where Python 3.12+ can run.
 > - Windows and macOS environments are only for development and debugging; production deployment is not supported.
 > - This SDK itself does not provide HTTP services; the transport layer and deployment environment must be provided by the integrator's business system.
 
 ### Runtime Environment Version Compatibility
 
-**Table 3** A2A-T Python SDK v0.1.8 Runtime Environment Requirements
+**Table 3** a2a-t-sdk-python v1.0.0 Runtime Environment Requirements
 
-| Software | Version Requirement | Purpose |
-|-----|---------|------|
-| Python | >= 3.12 | SDK runtime environment |
-| uv (recommended) / pip | uv >= 0.4 / pip >= 23 | Package management and build tools |
+| Software | Version Requirement       | Purpose |
+|-----|---------------------------|------|
+| Python | >= 3.12                   | SDK runtime environment |
+| uv (recommended) / pip | uv >= 0.4 / pip >= 23     | Package management and build tools |
 | LLM service | OpenAI protocol compatible | Dependency for LLM invocation scenarios such as task prompt generation, slot extraction, semantic validation |
 
 > **Note:**
@@ -735,7 +678,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Core Dependency Version Compatibility
 
-**Table 4** A2A-T Python SDK v0.1.8 Core Python Dependencies
+**Table 4** a2a-t-sdk-python v1.0.0 Core Python Dependencies
 
 | Dependency | Version | Purpose |
 |-----|------|------|
@@ -753,7 +696,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Configuration Item Compatibility
 
-**Table 5** A2A-T Python SDK v0.1.8 Configuration Item Description
+**Table 5** a2a-t-sdk-python v1.0.0 Configuration Item Description
 
 | Configuration Category | Configuration Item | Default Value | Description |
 |---------|-------|-------|------|
@@ -785,7 +728,7 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 ### Protocol Standard Compatibility
 
-**Table 6** Protocol Standards Followed by A2A-T Python SDK v0.1.8
+**Table 6** Protocol Standards Followed by a2a-t-sdk-python v1.0.0
 
 | Standard | Version | Description |
 |-----|------|------|
@@ -794,17 +737,17 @@ The initial release of A2A-T Python SDK only provides source code, without binar
 
 > **Note:**
 >
-> - A2A-T Python SDK is the reference implementation SDK for the A2A-T protocol standard. Task prompt format and negotiation process follow the above protocol standards.
+> - a2a-t-sdk-python is the reference implementation SDK for the A2A-T protocol standard. Task prompt format and negotiation process follow the above protocol standards.
 > - The A2A-T protocol is the telecom domain extension of the A2A (Agent-to-Agent) protocol, standardized and published by TM Forum.
 
 
-## A2A-T Java SDK
+## a2a-t-sdk-java
 
 ### Deliverables
 
-The initial release of A2A-T Java SDK only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community A2A-T Java SDK repository](https://github.com/project-openan/a2a-t-sdk-java).
+The initial release of a2a-t-sdk-java only provides source code, without binary installation packages. Source code can be obtained from the [OpenAN community a2a-t-sdk-java repository](https://github.com/project-openan/a2a-t-sdk-java).
 
-**Table 1** A2A-T Java SDK v0.1.8 Deliverable List
+**Table 1** a2a-t-sdk-java v1.0.0 Deliverable List
 
 <table border="0">
   <thead>
@@ -818,7 +761,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
     <tr>
       <td>Source Code</td>
       <td>a2a-t-java source code</td>
-      <td>Complete source code of A2A-T Java SDK, including 9 Maven modules: core model, resource management, LLM runtime, prompt processing, negotiation runtime, client facade, server facade, and sample integration</td>
+      <td>Complete source code of a2a-t-sdk-java, including 9 Maven modules: core model, resource management, LLM runtime, prompt processing, negotiation runtime, client facade, server facade, and sample integration</td>
     </tr>
     <tr>
       <td>Maven Artifact</td>
@@ -842,11 +785,10 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 >
 > - The initial release only delivers source code. Integrators need to build artifacts through Maven.
 > - Users can import the SDK through Maven dependencies, or build it themselves via `mvn -DskipTests package`.
-> - This version is in the Alpha stage (v0.1.8); interfaces and module organization may be adjusted with subsequent version evolution.
 
 ### Operating System Version Compatibility
 
-**Table 2** A2A-T Java SDK v0.1.8 Supported Scenarios
+**Table 2** a2a-t-sdk-java v1.0.0 Supported Scenarios
 
 | Operating System | Version | Architecture | Applicability |
 |---------|------|------|----------|
@@ -857,18 +799,18 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 
 > **Note:**
 >
-> - A2A-T Java SDK is a pure Java SDK with no platform-native dependencies, theoretically supporting all platforms where JDK 17+ can run.
+> - a2a-t-sdk-java is a pure Java SDK with no platform-native dependencies, theoretically supporting all platforms where JDK 17+ can run.
 > - Windows and macOS environments are only for development and debugging; production deployment is not supported.
 > - This SDK itself does not provide HTTP services; the transport layer and deployment environment must be provided by the integrator's business system.
 
 ### Runtime Environment Version Compatibility
 
-**Table 3** A2A-T Java SDK v0.1.8 Runtime Environment Requirements
+**Table 3** a2a-t-sdk-java v1.0.0 Runtime Environment Requirements
 
-| Software | Version Requirement | Purpose |
-|-----|---------|------|
-| JDK | >= 17 | SDK runtime environment |
-| Maven | >= 3.8 | Build and dependency management tool |
+| Software | Version Requirement      | Purpose |
+|-----|--------------------------|------|
+| JDK | >= 17                    | SDK runtime environment |
+| Maven | >= 3.8                   | Build and dependency management tool |
 | LLM service | OpenAI protocol compatible | Dependency for LLM invocation scenarios such as scenario identification, slot extraction, semantic validation |
 
 > **Note:**
@@ -881,7 +823,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 
 ### Core Dependency Version Compatibility
 
-**Table 4** A2A-T Java SDK v0.1.8 Core Dependencies
+**Table 4** a2a-t-sdk-java v1.0.0 Core Dependencies
 
 | Dependency | Version | Purpose |
 |-----|------|------|
@@ -902,7 +844,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 
 ### Module Version Compatibility
 
-**Table 5** A2A-T Java SDK v0.1.8 Module List
+**Table 5** a2a-t-sdk-java v1.0.0 Module List
 
 | Module | ArtifactId | Purpose | Dependent Modules |
 |------|-----------|------|----------|
@@ -926,7 +868,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 >           <dependency>
 >               <groupId>net.openan.a2a-t.sdk</groupId>
 >               <artifactId>a2a-t-bom</artifactId>
->               <version>0.1.8</version>
+>               <version>1.0.0</version>
 >               <type>pom</type>
 >               <scope>import</scope>
 >           </dependency>
@@ -937,7 +879,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 
 ### Configuration Item Compatibility
 
-**Table 6** A2A-T Java SDK v0.1.8 Configuration Item Description
+**Table 6** a2a-t-sdk-java v1.0.0 Configuration Item Description
 
 | Configuration Category | Configuration Item | Default Value | Description |
 |---------|-------|-------|------|
@@ -974,7 +916,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 
 ### Protocol Standard Compatibility
 
-**Table 7** Protocol Standards Followed by A2A-T Java SDK v0.1.8
+**Table 7** Protocol Standards Followed by a2a-t-sdk-java v1.0.0
 
 | Standard | Version | Description |
 |-----|------|------|
@@ -983,7 +925,7 @@ The initial release of A2A-T Java SDK only provides source code, without binary 
 
 > **Note:**
 >
-> - A2A-T Java SDK is the Java reference implementation SDK for the A2A-T protocol standard. Task prompt format and negotiation process follow the above protocol standards.
+> - a2a-t-sdk-java is the Java reference implementation SDK for the A2A-T protocol standard. Task prompt format and negotiation process follow the above protocol standards.
 > - The A2A-T protocol is the telecom domain extension of the A2A (Agent-to-Agent) protocol, standardized and published by TM Forum.
 > - Negotiation context transmission follows the A2A project telecom extension URI convention, carried in Task.metadata through the `https://github.com/a2aproject/telecommunication/extensions/DATA-NEGOTIATION-T/v1` key.
 

@@ -465,7 +465,7 @@ PYTHON_PATH=
 SERVICE_NAME=registry-center
 
 # 是否自动安装依赖（推荐设置为true，使用pip安装）
-INSTALL_DEPS=false
+INSTALL_DEPS=true
 ```
 
 > 退出vi：按下Esc按键，输入:wq!
@@ -618,7 +618,7 @@ PYTHON_PATH=
 SERVICE_NAME=orchestration-center
 
 # 是否自动安装依赖（推荐设置为true，使用pip安装）
-INSTALL_DEPS=false
+INSTALL_DEPS=true
 ```
 
 > 退出vi：按下Esc按键，输入:wq!

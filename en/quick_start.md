@@ -463,7 +463,7 @@ PYTHON_PATH=
 SERVICE_NAME=registry-center
 
 # Whether to auto-install dependencies (recommended: true, use pip install)
-INSTALL_DEPS=false
+INSTALL_DEPS=true
 ```
 
 > To exit vi: press the Esc key, type :wq!
@@ -616,7 +616,7 @@ PYTHON_PATH=
 SERVICE_NAME=orchestration-center
 
 # Whether to auto-install dependencies (recommended: true, use pip install)
-INSTALL_DEPS=false
+INSTALL_DEPS=true
 ```
 
 > To exit vi: press the Esc key, type :wq!

@@ -863,7 +863,7 @@ http {
 
         # Frontend static resources
         location / {
-            root   /OpenA2A-T/orchestration-center-1.0/dist;  # <-- Change to actual dist directory path
+            root   /path/to/orchestration-center/dist;  # <-- Change to actual dist directory path
             index  index.html index.htm;
             try_files $uri $uri/ /index.html;                 # SPA routing support
         }
@@ -885,7 +885,7 @@ http {
 }
 ```
 
-> **Configuration Notes**: In the above config, `root /OpenA2A-T/orchestration-center-1.0/dist` points to the dist directory under the default installation path — change it if your actual deployment path differs. The `upstream` address `127.0.0.1:5001` should be replaced with the actual orchestration-center backend service address (use `127.0.0.1` for local deployment, or a private IP for remote deployment). Other options (port, timeouts, etc.) can be adjusted according to your network environment and requirements.
+> **Configuration Notes**: In the above config, `root /path/to/orchestration-center/dist` should be replaced with the actual dist directory path. The `upstream` address `127.0.0.1:5001` should be replaced with the actual orchestration-center backend service address (use `127.0.0.1` for local deployment, or a private IP for remote deployment). Other options (port, timeouts, etc.) can be adjusted according to your network environment and requirements.
 
 > **Note**: Production mode is recommended. The target server does not need NodeJS installed.
 

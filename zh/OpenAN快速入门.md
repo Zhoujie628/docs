@@ -865,7 +865,7 @@ http {
 
         # 前端静态资源
         location / {
-            root   /OpenA2A-T/orchestration-center-1.0/dist;  # <-- 改为实际dist目录路径
+            root   /path/to/orchestration-center/dist;  # <-- 改为实际dist目录路径
             index  index.html index.htm;
             try_files $uri $uri/ /index.html;                 # SPA路由支持
         }
@@ -887,7 +887,7 @@ http {
 }
 ```
 
-> **配置说明**：上述配置中 `root /OpenA2A-T/orchestration-center-1.0/dist` 为默认安装路径下的 dist 目录，如实际部署路径不同请修改。`upstream` 中的 `127.0.0.1:5001` 需替换为实际的编排中心后端服务地址（本地部署用 `127.0.0.1`，远程部署用内网IP）。其余选项（端口、超时等）按实际网络环境和需求调整即可。
+> **配置说明**：上述配置中 `root /path/to/orchestration-center/dist` 需替换为实际的 dist 目录路径。`upstream` 中的 `127.0.0.1:5001` 需替换为实际的编排中心后端服务地址（本地部署用 `127.0.0.1`，远程部署用内网IP）。其余选项（端口、超时等）按实际网络环境和需求调整即可。
 
 > **说明**：生产环境推荐构建模式，目标服务器无需安装NodeJS。
 

@@ -839,27 +839,56 @@ npm install --force
 npm run build      # 产出 dist/ 目录
 tar -czf workflow-designer-dist.tar.gz dist/
 ```
-- 将 `workflow-designer-dist.tar.gz` 传输到目标服务器，解压到 nginx 静态资源目录并配置：
+- 将 `workflow-designer-dist.tar.gz` 传输到目标服务器，解压到编排中心安装目录后配置 nginx。以下为完整的 nginx 参考配置，用户可根据实际部署环境修改标注了 `<-- 可按需修改` 的配置项：
+
 ```nginx
-server {
-    listen       3003;
-    server_name  localhost;
+user nginx                              # <-- 按实际运行用户修改
+worker_processes  1;                    # <-- 可按CPU核数调整
+events {
+    worker_connections  1024;           # <-- 可按需调整
+}
 
-    location / {
-        root   /path/to/dist;
-        index  index.html;
-        try_files $uri $uri/ /index.html;
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    # 编排中心后端集群，按实际后端服务地址修改
+    upstream orchestrate_backend {
+        server 127.0.0.1:5001 max_fails=3 fail_timeout=30s;  # <-- 改为实际后端IP:端口，可添加多个节点
     }
 
-    # 后端API反向代理
-    location /api/ {
-        proxy_pass http://127.0.0.1:5001;
-    }
-    location /rest/ {
-        proxy_pass http://127.0.0.1:5001;
+    server {
+        listen       80;                # <-- 可按需修改监听端口
+        server_name  localhost;         # <-- 按实际域名或IP修改
+
+        # 前端静态资源
+        location / {
+            root   /OpenA2A-T/orchestration-center-1.0/dist;  # <-- 改为实际dist目录路径
+            index  index.html index.htm;
+            try_files $uri $uri/ /index.html;                 # SPA路由支持
+        }
+
+        # 编排中心 API 反向代理
+        location /api/orchestrate/ {
+            proxy_pass http://orchestrate_backend/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_connect_timeout 5s;    # <-- 可按需调整
+            proxy_send_timeout 180s;     # <-- 可按需调整
+            proxy_read_timeout 180s;     # <-- 可按需调整
+            proxy_next_upstream error timeout http_500 http_502 http_503;
+        }
     }
 }
 ```
+
+> **配置说明**：上述配置中 `root /OpenA2A-T/orchestration-center-1.0/dist` 为默认安装路径下的 dist 目录，如实际部署路径不同请修改。`upstream` 中的 `127.0.0.1:5001` 需替换为实际的编排中心后端服务地址（本地部署用 `127.0.0.1`，远程部署用内网IP）。其余选项（端口、超时等）按实际网络环境和需求调整即可。
+
 > **说明**：生产环境推荐构建模式，目标服务器无需安装NodeJS。
 
 ---

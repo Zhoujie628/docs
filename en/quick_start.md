@@ -837,27 +837,56 @@ npm install --force
 npm run build      # Produces dist/ directory
 tar -czf workflow-designer-dist.tar.gz dist/
 ```
-- Transfer `workflow-designer-dist.tar.gz` to the target server, extract to nginx static resource directory, and configure:
+- Transfer `workflow-designer-dist.tar.gz` to the target server, extract to the orchestration-center installation directory, then configure nginx. The following is a complete reference configuration. Modify items marked with `<-- customizable` according to your actual deployment environment:
+
 ```nginx
-server {
-    listen       3003;
-    server_name  localhost;
+user nginx                              # <-- Change to actual running user
+worker_processes  1;                    # <-- Adjust based on CPU cores
+events {
+    worker_connections  1024;           # <-- Adjust as needed
+}
 
-    location / {
-        root   /path/to/dist;
-        index  index.html;
-        try_files $uri $uri/ /index.html;
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    # orchestration-center backend cluster; change to actual backend service address
+    upstream orchestrate_backend {
+        server 127.0.0.1:5001 max_fails=3 fail_timeout=30s;  # <-- Replace with actual backend IP:port, can add multiple nodes
     }
 
-    # Backend API reverse proxy
-    location /api/ {
-        proxy_pass http://127.0.0.1:5001;
-    }
-    location /rest/ {
-        proxy_pass http://127.0.0.1:5001;
+    server {
+        listen       80;                # <-- Change port as needed
+        server_name  localhost;         # <-- Change to actual domain or IP
+
+        # Frontend static resources
+        location / {
+            root   /OpenA2A-T/orchestration-center-1.0/dist;  # <-- Change to actual dist directory path
+            index  index.html index.htm;
+            try_files $uri $uri/ /index.html;                 # SPA routing support
+        }
+
+        # orchestration-center API reverse proxy
+        location /api/orchestrate/ {
+            proxy_pass http://orchestrate_backend/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_connect_timeout 5s;    # <-- Adjust as needed
+            proxy_send_timeout 180s;     # <-- Adjust as needed
+            proxy_read_timeout 180s;     # <-- Adjust as needed
+            proxy_next_upstream error timeout http_500 http_502 http_503;
+        }
     }
 }
 ```
+
+> **Configuration Notes**: In the above config, `root /OpenA2A-T/orchestration-center-1.0/dist` points to the dist directory under the default installation path — change it if your actual deployment path differs. The `upstream` address `127.0.0.1:5001` should be replaced with the actual orchestration-center backend service address (use `127.0.0.1` for local deployment, or a private IP for remote deployment). Other options (port, timeouts, etc.) can be adjusted according to your network environment and requirements.
+
 > **Note**: Production mode is recommended. The target server does not need NodeJS installed.
 
 ---

@@ -115,7 +115,7 @@ ldd --version
 
 ### Node Requirements
 
-For online environments, nodes must be able to connect to external networks. For offline environments, dependency packages must be pre-downloaded on a networked Linux machine with the same architecture as the target server (x86_64 or aarch64), then transferred to the target node for installation (see offline installation steps in Sections 2.3 and 2.4).<br>
+For online environments, nodes must be able to connect to external networks. For offline environments, dependency packages must be pre-downloaded on a networked Linux machine with the same architecture as the target server (x86_64 or aarch64), then transferred to the target node for installation (see offline installation steps in [Registry Center Installation Steps](#23-registry-center-installation-steps) and [Orchestration Center Installation Steps](#24-orchestration-center-installation-steps)).<br>
 Nodes can be accessed using the root user.<br>
 The bootstrap node needs the tar tool installed.
 > **Notice**: It is recommended that your node environment is clean, without any Kubernetes components installed, otherwise version conflicts may occur causing installation failure.
@@ -819,7 +819,7 @@ sudo ./bin/install_service.sh uninstall
 
 ## 2.5 orchestration-center Frontend Deployment Steps
 
-The frontend code is a React single-page application and has been integrated into the orchestration-center code repository. After completing [Section 2.4](#24-orchestration-center-installation-steps), the frontend code is already installed.
+The frontend code is a React single-page application and has been integrated into the orchestration-center code repository. After completing [Orchestration Center Installation Steps](#24-orchestration-center-installation-steps), the frontend code is already installed.
 
 **Development mode** (requires NodeJS, for debugging):
 ```bash

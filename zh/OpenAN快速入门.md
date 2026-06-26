@@ -116,7 +116,7 @@ ldd --version
 
 ### 节点要求
 
-在线环境要求节点可以连通外部网络；离线环境需提前在有网络的Linux机器（与目标服务器架构一致，x86_64或aarch64）上下载依赖包，再传输到目标节点安装（参见2.3节和2.4节第4步离线安装方案）。<br>
+在线环境要求节点可以连通外部网络；离线环境需提前在网络已连通的Linux机器（与目标服务器架构一致，x86_64或aarch64）上下载依赖包，再传输到目标节点安装（参见[注册中心服务安装步骤](#23-注册中心服务安装步骤)和[编排中心服务安装步骤](#24-编排中心服务安装步骤)第4步离线安装方案）。<br>
 节点可以使用root用户登录。<br>
 引导节点上需要安装tar工具。
 > **须知**：建议您的节点环境足够干净，未安装任何Kubernetes组件，否则可能会发生版本冲突导致安装失败。
@@ -436,9 +436,9 @@ git clone https://github.com/project-openan/registry-center.git
 cd registry-center
 ```
 
-**离线环境**：在有网机器上 clone 源码后打包传输到目标服务器。
+**离线环境**：在网络已连通的机器上 clone 源码后打包传输到目标服务器。
 ```bash
-# 在有网机器上执行
+# 在网络已连通的机器上执行
 git clone https://github.com/project-openan/registry-center.git
 tar -czf registry-center.tar.gz registry-center/
 
@@ -471,8 +471,8 @@ source venv/bin/activate
 pip install -r ./requirements.txt
 ```
 
-**离线环境**：目标服务器无法连接外部网络，需在相同架构（x86_64或aarch64）的有网Linux机器上提前下载wheel包。
-- 在有网机器上执行：
+**离线环境**：目标服务器无法连接外部网络，需在相同架构（x86_64或aarch64）的网络已连通的Linux机器上提前下载wheel包。
+- 在网络已连通的机器上执行：
 ```bash
 # 创建wheel存放目录
 mkdir -p ./wheels
@@ -638,9 +638,9 @@ git clone https://github.com/project-openan/orchestration-center.git
 cd orchestration-center
 ```
 
-**离线环境**：在有网机器上 clone 源码后打包传输到目标服务器。
+**离线环境**：在网络已连通的机器上 clone 源码后打包传输到目标服务器。
 ```bash
-# 在有网机器上执行
+# 在网络已连通的机器上执行
 git clone https://github.com/project-openan/orchestration-center.git
 tar -czf orchestration-center.tar.gz orchestration-center/
 
@@ -673,8 +673,8 @@ source venv/bin/activate
 pip install -r ./requirements.txt
 ```
 
-**离线环境**：目标服务器无法连接外部网络，需在相同架构（x86_64或aarch64）的有网Linux机器上提前下载wheel包。
-- 在有网机器上执行：
+**离线环境**：目标服务器无法连接外部网络，需在相同架构（x86_64或aarch64）的网络已连通的Linux机器上提前下载wheel包。
+- 在网络已连通的机器上执行：
 ```bash
 # 创建wheel存放目录
 mkdir -p ./wheels
@@ -821,7 +821,7 @@ sudo ./bin/install_service.sh uninstall
 
 ## 2.5 编排中心前端部署步骤
 
-编排中心前端为 React 单页应用，源码已集成在编排中心代码仓中。完成[2.4章节](#24-编排中心服务安装步骤)后前端代码即已安装完成。
+编排中心前端为 React 单页应用，源码已集成在编排中心代码仓中。完成[编排中心服务安装步骤](#24-编排中心服务安装步骤)后前端代码即已安装完成。
 
 **开发模式**（需NodeJS，用于调试）：
 ```bash
